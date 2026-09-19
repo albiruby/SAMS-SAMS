@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import MobileMenu from "./MobileMenu";
 
 const navLinks = [
-  { label: "THE GROUP", href: "/" },
+  { label: "THE GROUP", href: "/about" },
   { label: "JOURNAL", href: "/journal" },
 ];
 
@@ -39,12 +39,12 @@ export default function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="w-full flex items-center justify-between h-28 lg:h-36 px-6 lg:px-10">
+      <div className="w-full flex items-center justify-between h-20 lg:h-24 px-6 lg:px-10">
         <Link href="/" className="flex-shrink-0 flex items-center">
           {dark ? (
-            <img src="/logosamsdark.png" alt="Samsara" className="h-24 lg:h-32 w-auto" />
+            <img src="/logosamsdark.png" alt="Samsara" className="h-16 lg:h-20 w-auto" />
           ) : (
-            <img src="/logosamslight.png" alt="Samsara" className="h-24 lg:h-32 w-auto" />
+            <img src="/logosamslight.png" alt="Samsara" className="h-16 lg:h-20 w-auto" />
           )}
         </Link>
 

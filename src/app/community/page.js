@@ -29,7 +29,7 @@ export default function CommunityPage() {
   return (
     <>
       <Header />
-      <main className="bg-surface pt-32">
+      <main className="bg-surface pt-28">
         <section className="max-w-[1520px] mx-auto px-6 lg:px-10 pb-24">
           <ScrollReveal>
             <p className="font-label text-xs tracking-[0.2em] uppercase text-on-surface-variant mb-6">

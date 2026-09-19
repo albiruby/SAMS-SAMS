@@ -31,7 +31,7 @@ export default function MusicPage() {
     <>
       <Header />
 
-      <section className="bg-surface pt-32 pb-16 max-w-[1520px] mx-auto px-6 lg:px-10">
+      <section className="bg-surface pt-28 pb-16 max-w-[1520px] mx-auto px-6 lg:px-10">
         <ScrollReveal>
           <div className="mb-8 flex items-center gap-3 text-label-caps-sm uppercase tracking-[0.2em] text-on-surface-variant">
             <Link href="/#worlds" className="hover:text-terracotta transition-colors">WORLDS</Link>

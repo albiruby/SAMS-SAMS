@@ -34,7 +34,7 @@ export default function CollaborationsPage() {
     <div className="dark bg-primary-container text-on-primary-container">
       <Header />
 
-      <section className="pt-32 pb-16 max-w-[1520px] mx-auto px-6 lg:px-10">
+      <section className="pt-28 pb-16 max-w-[1520px] mx-auto px-6 lg:px-10">
         <ScrollReveal>
           <h1 className="text-display-md-mobile md:text-display-md font-display uppercase leading-[0.95] text-on-primary-container">COLLABORATIONS</h1>
         </ScrollReveal>

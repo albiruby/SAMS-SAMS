@@ -35,7 +35,7 @@ export default function DiningPage() {
     <>
       <Header />
 
-      <main className="bg-surface pt-32">
+      <main className="bg-surface pt-28">
         <div className="max-w-[1520px] mx-auto px-6 lg:px-10">
           <ScrollReveal>
             <div className="py-8 lg:py-12">

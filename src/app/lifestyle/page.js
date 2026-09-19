@@ -11,7 +11,7 @@ export default function LifestylePage() {
   return (
     <>
       <Header />
-      <main className="pt-32 max-w-[1520px] mx-auto px-6 lg:px-10">
+      <main className="pt-28 max-w-[1520px] mx-auto px-6 lg:px-10">
         <ScrollReveal>
           <p className="font-label text-xs tracking-[0.2em] uppercase text-on-surface-variant mb-6">
             <Link href="/" className="hover:text-primary transition-colors">

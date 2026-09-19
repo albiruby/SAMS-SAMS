@@ -13,7 +13,7 @@ export default function SanctuaryOfSoundPage() {
     <>
       <Header />
 
-      <section className="bg-surface pt-32 pb-16 max-w-[1520px] mx-auto px-6 lg:px-10">
+      <section className="bg-surface pt-28 pb-16 max-w-[1520px] mx-auto px-6 lg:px-10">
         <ScrollReveal>
           <Link
             href="/journal"

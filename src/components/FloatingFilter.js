@@ -26,7 +26,7 @@ export default function FloatingFilter() {
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className={`bg-surface/70 backdrop-blur-xl border border-outline-variant/40 shadow-[0_8px_32px_rgba(0,0,0,0.15)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
+        className={`bg-white/20 backdrop-blur-2xl border border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.2)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
           hovered
             ? "rounded-[28px] w-[200px] py-5 px-3"
             : "rounded-[28px] w-auto min-w-[100px] h-[72px] flex items-center justify-center px-6"
@@ -34,11 +34,11 @@ export default function FloatingFilter() {
       >
         {!hovered ? (
           <div className="flex items-center gap-2">
-            <span className="font-label text-[11px] tracking-[0.2em] uppercase text-on-surface whitespace-nowrap">
+            <span className="font-label text-[11px] tracking-[0.2em] uppercase text-white whitespace-nowrap">
               {activeCat.label}
             </span>
             {activeCat.count !== null && (
-              <span className="font-label text-[10px] text-on-surface-variant whitespace-nowrap">
+              <span className="font-label text-[10px] text-white/60 whitespace-nowrap">
                 ({activeCat.count})
               </span>
             )}
@@ -52,8 +52,8 @@ export default function FloatingFilter() {
                 onClick={() => setActive(cat.label)}
                 className={`w-full text-left font-label text-[11px] tracking-[0.18em] uppercase py-2.5 px-4 rounded-full transition-all duration-200 ${
                   active === cat.label
-                    ? "bg-primary text-on-primary"
-                    : "text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low"
+                    ? "bg-white text-black"
+                    : "text-white/70 hover:text-white hover:bg-white/10"
                 }`}
               >
                 {cat.label}

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Preloader from "@/components/Preloader";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FadeInImage from "@/components/FadeInImage";
 import { useTheme } from "@/components/ThemeProvider";
 
 const worlds = [
@@ -35,7 +36,7 @@ export default function HomePage() {
 
         {/* ── Hero ── */}
         <section className="relative w-full h-screen min-h-[600px] overflow-hidden">
-          <img src="/tampilanawal.webp" alt="Sams Group" className="absolute inset-0 w-full h-full object-cover" />
+          <FadeInImage src="/tampilanawal.webp" alt="Sams Group" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30" />
           <div className="relative z-10 h-full flex flex-col justify-end px-6 lg:px-10 pb-16 lg:pb-24">
             <h1 className="font-display text-headline-lg lg:text-display-hero uppercase leading-[0.95] tracking-tight text-white max-w-4xl">
@@ -74,7 +75,7 @@ export default function HomePage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-outline-variant">
               {worlds.map((world) => (
-                <Link key={world.name} href={world.href} className="group bg-surface-container-low p-6 lg:p-8 hover:bg-surface transition-colors">
+                <Link key={world.name} href={world.href} className="group card-hover bg-surface-container-low p-6 lg:p-8 hover:bg-surface transition-colors">
                   <span className="font-label text-body-sm uppercase tracking-[0.1em] text-on-surface-variant block mb-3">{world.tagline}</span>
                   <h3 className="font-display text-headline-sm uppercase text-on-surface mb-2 group-hover:text-terracotta transition-colors">{world.name}</h3>
                   <p className="font-label text-body-sm uppercase tracking-[0.1em] text-on-surface-variant/60">{world.disciplines}</p>

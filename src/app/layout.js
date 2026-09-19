@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import FloatingFilter from "@/components/FloatingFilter";
+import PageTransition from "@/components/PageTransition";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,7 +20,9 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${inter.variable}`}>
       <body className="bg-surface font-sans text-on-surface antialiased">
         <ThemeProvider>
-          {children}
+          <PageTransition>
+            {children}
+          </PageTransition>
           <FloatingFilter />
         </ThemeProvider>
       </body>

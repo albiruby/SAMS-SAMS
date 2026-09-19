@@ -37,23 +37,23 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
         dark
-          ? "bg-surface/60 backdrop-blur-xl border-b border-outline-variant/20"
+          ? "bg-surface/30 backdrop-blur-xl border-b border-outline-variant/10"
           : "bg-transparent"
       }`}
     >
       <div className="w-full flex items-center justify-between h-20 lg:h-24 px-6 lg:px-10">
         <Link href="/" className="flex-shrink-0">
           <img
-            src="/teslogosamsara1.png"
+            src="/logosamslight.png"
             alt="Samsara"
-            className={`h-24 lg:h-28 w-auto transition-opacity duration-300 ${
+            className={`h-20 lg:h-24 w-auto transition-opacity duration-300 ${
               dark ? "opacity-0 hidden" : "opacity-100"
             }`}
           />
           <img
-            src="/logosams.png"
+            src="/logosamsdark.png"
             alt="Samsara"
-            className={`h-24 lg:h-28 w-auto transition-opacity duration-300 ${
+            className={`h-20 lg:h-24 w-auto transition-opacity duration-300 ${
               dark ? "opacity-100" : "opacity-0 hidden"
             }`}
           />

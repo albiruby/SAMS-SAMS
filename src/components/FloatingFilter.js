@@ -23,7 +23,7 @@ export default function FloatingFilter() {
 
   const activeCat = categories.find((c) => c.label === active);
   const isDark = darkPages.includes(pathname);
-  const logoSrc = isDark ? "/logosamslight.png" : "/logosamsdark.png";
+  const logoSrc = isDark ? "/logodoanglight.png" : "/logodoangdark.png";
 
   return (
     <div

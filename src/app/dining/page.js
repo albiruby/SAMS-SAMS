@@ -14,19 +14,19 @@ const concepts = [
     name: "Samsara Kitchen",
     description:
       "The flagship. Contemporary cuisine drawn from local harvests, where every plate tells a story of the land it came from.",
-    href: "/dining/samsara-kitchen",
+    href: "/samsara",
   },
   {
     name: "Acasa Garden",
     description:
       "Open-air dining among tropical greenery. Mediterranean-inspired dishes served beneath canopies of light and leaf.",
-    href: "/dining/acasa-garden",
+    href: "/acasa",
   },
   {
     name: "Svarga Table",
     description:
       "Communal feasts elevated. Shared plates, seasonal pairings, and the warmth of gathering around a single table.",
-    href: "/dining/svarga-table",
+    href: "/svarga",
   },
 ];
 

@@ -4,18 +4,18 @@ import { useEffect } from "react";
 import Link from "next/link";
 
 const mobileLinks = [
-  { label: "THE GROUP", href: "/" },
-  { label: "EXPERIENCES", href: "/#experiences" },
-  { label: "EVENTS", href: "/events" },
+  { label: "THE GROUP", href: "/about" },
   { label: "JOURNAL", href: "/journal" },
+  { label: "EVENTS", href: "/events" },
+  { label: "CAREERS", href: "/careers" },
   { label: "CONTACT", href: "/contact" },
 ];
 
 const worldsSubLinks = [
-  { label: "Samsara", href: "/" },
+  { label: "Samsara", href: "/samsara" },
   { label: "Svvara", href: "/svvara" },
   { label: "Svarga", href: "/svarga" },
-  { label: "Acasa", href: "/locations" },
+  { label: "Acasa", href: "/acasa" },
 ];
 
 export default function MobileMenu({ isOpen, onClose }) {

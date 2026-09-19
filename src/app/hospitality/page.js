@@ -131,7 +131,7 @@ export default function HospitalityPage() {
             <ScrollReveal>
               <Link
                 href="/contact"
-                className="inline-block bg-primary text-on-primary font-label text-sm tracking-[0.15em] uppercase px-10 py-5 hover:bg-tertiary transition-colors duration-300"
+                className="inline-block bg-primary text-on-primary font-label text-sm tracking-[0.15em] uppercase px-10 py-5 hover:bg-primary/80 transition-colors duration-300"
               >
                 Get in Touch
               </Link>

@@ -12,19 +12,19 @@ const concepts = [
     title: "Svvara Objects",
     description:
       "Curated objects that carry intention. Each piece selected for its material truth, its quiet presence, its ability to shift the mood of a room.",
-    href: "/design/svvara",
+    href: "/svvara",
   },
   {
     title: "Samsara Interiors",
     description:
       "Spaces designed around the rituals of daily life. Light, proportion, and flow arranged to support stillness and movement in equal measure.",
-    href: "/design/interiors",
+    href: "/samsara",
   },
   {
     title: "Acasa Living",
     description:
       "Furniture and fixtures built to last beyond trend. Rooted in craft, refined through use, honest in material and form.",
-    href: "/design/acasa",
+    href: "/acasa",
   },
 ];
 

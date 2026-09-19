@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTheme } from "./ThemeProvider";
 
 const categories = [
   { label: "ALL", count: 6, href: "/" },
@@ -14,16 +14,14 @@ const categories = [
   { label: "COMMUNITY", count: null, href: "/community" },
 ];
 
-const darkPages = ["/", "/collaborations", "/samsara", "/svvara", "/nocturne"];
-
 export default function FloatingFilter() {
   const [active, setActive] = useState("ALL");
   const [hovered, setHovered] = useState(false);
-  const pathname = usePathname();
+  const { theme } = useTheme();
 
   const activeCat = categories.find((c) => c.label === active);
-  const isDark = darkPages.includes(pathname);
-  const logoSrc = isDark ? "/logodoanglight.png" : "/logodoangdark.png";
+  const isDark = theme === "dark";
+  const logoSrc = isDark ? "/logodoangdark.png" : "/logodoanglight.png";
 
   return (
     <div

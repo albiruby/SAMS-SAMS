@@ -1,12 +1,11 @@
+"use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-
-export const metadata = {
-  title: "Collaborations — Samsara Group",
-  description: "Partnerships, alliances, and creative residencies with Samsara Group.",
-};
+import { useTheme } from "@/components/ThemeProvider";
 
 const collaborations = [
   {
@@ -30,6 +29,9 @@ const collaborations = [
 ];
 
 export default function CollaborationsPage() {
+  const { setTheme } = useTheme();
+  useEffect(() => { setTheme("dark"); return () => setTheme("light"); }, [setTheme]);
+
   return (
     <div className="dark bg-primary-container text-on-primary-container">
       <Header />

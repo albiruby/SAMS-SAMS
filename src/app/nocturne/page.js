@@ -1,14 +1,16 @@
+"use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-
-export const metadata = {
-  title: "Nocturne V — Samsara Group",
-  description: "An evening of deep listening in darkness. Five hours of curated analog sound.",
-};
+import { useTheme } from "@/components/ThemeProvider";
 
 export default function NocturnePage() {
+  const { setTheme } = useTheme();
+  useEffect(() => { setTheme("dark"); return () => setTheme("light"); }, [setTheme]);
+
   return (
     <>
       <Header />

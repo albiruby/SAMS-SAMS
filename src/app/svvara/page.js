@@ -1,12 +1,11 @@
+"use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-
-export const metadata = {
-  title: "Svvara — Samsara Group",
-  description: "Handcrafted audio objects born from volcanic stone, reclaimed teak, and solid-state electronics.",
-};
+import { useTheme } from "@/components/ThemeProvider";
 
 const products = [
   { name: "MONOLITH 01", description: "Single-driver loudspeaker carved from volcanic basalt. Pure signal path.", price: "IDR 48,000,000" },
@@ -15,6 +14,9 @@ const products = [
 ];
 
 export default function SvvaraPage() {
+  const { setTheme } = useTheme();
+  useEffect(() => { setTheme("dark"); return () => setTheme("light"); }, [setTheme]);
+
   return (
     <>
       <Header />

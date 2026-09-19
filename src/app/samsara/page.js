@@ -1,14 +1,16 @@
+"use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-
-export const metadata = {
-  title: "Samsara — Samsara Group",
-  description: "Sound. Food. Culture. A sanctuary where every frequency is designed.",
-};
+import { useTheme } from "@/components/ThemeProvider";
 
 export default function SamsaraPage() {
+  const { setTheme } = useTheme();
+  useEffect(() => { setTheme("dark"); return () => setTheme("light"); }, [setTheme]);
+
   return (
     <>
       <Header />

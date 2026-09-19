@@ -1,9 +1,11 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import Preloader from "@/components/Preloader";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useTheme } from "@/components/ThemeProvider";
 
 const worlds = [
   { name: "SAMSARA", tagline: "THE SANCTUARY", disciplines: "ACOUSTICS · DINING · RETREAT", href: "/samsara" },
@@ -22,6 +24,9 @@ const marqueeImages = [
 ];
 
 export default function HomePage() {
+  const { setTheme } = useTheme();
+  useEffect(() => { setTheme("dark"); return () => setTheme("light"); }, [setTheme]);
+
   return (
     <>
       <Preloader />

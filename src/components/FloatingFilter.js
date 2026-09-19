@@ -32,14 +32,18 @@ export default function FloatingFilter() {
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className={`bg-white/30 backdrop-blur-2xl border border-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
+        className={`backdrop-blur-2xl border shadow-[0_8px_32px_rgba(0,0,0,0.12)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
+          isDark
+            ? "bg-white/15 border-white/20"
+            : "bg-black/5 border-black/10"
+        } ${
           hovered
             ? "rounded-[28px] w-[200px] py-5 px-3"
             : "rounded-[28px] w-[72px] h-[72px] flex items-center justify-center"
         }`}
       >
         {!hovered ? (
-          <Link href="/" className="flex items-center justify-center">
+          <Link href="/" className="flex items-center justify-center w-full h-full">
             <img src={logoSrc} alt="Samsara" className="h-10 w-auto" />
           </Link>
         ) : (
@@ -51,8 +55,12 @@ export default function FloatingFilter() {
                 onClick={() => setActive(cat.label)}
                 className={`w-full text-left font-label text-[11px] tracking-[0.18em] uppercase py-2.5 px-4 rounded-full transition-all duration-200 ${
                   active === cat.label
-                    ? "bg-on-surface text-surface"
-                    : "text-on-surface-variant hover:text-on-surface hover:bg-black/5"
+                    ? isDark
+                      ? "bg-white text-black"
+                      : "bg-black text-white"
+                    : isDark
+                      ? "text-white/60 hover:text-white hover:bg-white/10"
+                      : "text-black/50 hover:text-black hover:bg-black/5"
                 }`}
               >
                 {cat.label}

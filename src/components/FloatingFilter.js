@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const categories = [
   { label: "ALL", count: 6, href: "/" },
@@ -13,11 +14,16 @@ const categories = [
   { label: "COMMUNITY", count: null, href: "/community" },
 ];
 
+const darkPages = ["/", "/collaborations", "/samsara", "/svvara", "/nocturne"];
+
 export default function FloatingFilter() {
   const [active, setActive] = useState("ALL");
   const [hovered, setHovered] = useState(false);
+  const pathname = usePathname();
 
   const activeCat = categories.find((c) => c.label === active);
+  const isDark = darkPages.includes(pathname);
+  const logoSrc = isDark ? "/logosamslight.png" : "/logosamsdark.png";
 
   return (
     <div
@@ -29,20 +35,13 @@ export default function FloatingFilter() {
         className={`bg-white/30 backdrop-blur-2xl border border-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
           hovered
             ? "rounded-[28px] w-[200px] py-5 px-3"
-            : "rounded-[28px] w-auto min-w-[100px] h-[72px] flex items-center justify-center px-6"
+            : "rounded-[28px] w-[72px] h-[72px] flex items-center justify-center"
         }`}
       >
         {!hovered ? (
-          <div className="flex items-center gap-2">
-            <span className="font-label text-[11px] tracking-[0.2em] uppercase text-on-surface whitespace-nowrap">
-              {activeCat.label}
-            </span>
-            {activeCat.count !== null && (
-              <span className="font-label text-[10px] text-on-surface-variant whitespace-nowrap">
-                ({activeCat.count})
-              </span>
-            )}
-          </div>
+          <Link href="/" className="flex items-center justify-center">
+            <img src={logoSrc} alt="Samsara" className="h-10 w-auto" />
+          </Link>
         ) : (
           <div className="flex flex-col gap-1">
             {categories.map((cat) => (

@@ -43,7 +43,7 @@ export default function FloatingFilter() {
         }`}
       >
         {!hovered ? (
-          <Link href="/" className="flex items-center justify-center w-full h-full p-4">
+          <Link href="/" className="flex items-center justify-center w-full h-full p-2">
             <img src={logoSrc} alt="Samsara" className="w-full h-full object-contain" />
           </Link>
         ) : (

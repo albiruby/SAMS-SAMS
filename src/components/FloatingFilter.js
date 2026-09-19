@@ -28,7 +28,7 @@ export default function FloatingFilter() {
         className={`bg-surface/70 backdrop-blur-xl border border-outline-variant/40 shadow-[0_8px_32px_rgba(0,0,0,0.15)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
           hovered
             ? "rounded-[28px] w-[180px] py-5 px-3"
-            : "rounded-full w-[72px] h-[72px] flex items-center justify-center"
+            : "rounded-[28px] w-[72px] h-[72px] flex items-center justify-center"
         }`}
       >
         {!hovered ? (

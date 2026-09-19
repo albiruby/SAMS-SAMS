@@ -47,7 +47,7 @@ export default function CareersPage() {
     <>
       <Header />
 
-      <section className="bg-surface pt-28 pb-16 max-w-[1520px] mx-auto px-6 lg:px-10">
+      <section className="bg-surface pt-32 pb-16 max-w-[1520px] mx-auto px-6 lg:px-10">
         <ScrollReveal>
           <h1 className="text-display-md-mobile md:text-display-md font-display uppercase leading-[0.95] text-on-surface">CAREERS</h1>
           <p className="mt-6 max-w-lg text-body-md text-on-surface-variant leading-relaxed">

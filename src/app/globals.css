@@ -210,8 +210,10 @@
 .hero-stagger.entered > *:nth-child(3) { transition-delay: 260ms; }
 .hero-stagger.entered > *:nth-child(4) { transition-delay: 340ms; }
 
-.marquee-track { display: flex; width: max-content; animation: marqueeScroll 90s linear infinite; }
+.marquee-track { display: flex; width: max-content; animation: marqueeScroll 40s linear infinite; }
 .marquee-track:hover { animation-play-state: paused; }
+.marquee-content { display: flex; gap: 1.5rem; }
+.marquee-item { flex-shrink: 0; width: 320px; height: 220px; overflow: hidden; }
 @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 .font-display { font-family: var(--font-display); }

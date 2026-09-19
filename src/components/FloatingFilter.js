@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const categories = [
-  { label: "ALL", count: 6 },
-  { label: "MUSIC", count: null },
-  { label: "DINING", count: null },
-  { label: "HOSPITALITY", count: null },
-  { label: "DESIGN", count: null },
-  { label: "LIFESTYLE", count: null },
-  { label: "COMMUNITY", count: null },
+  { label: "ALL", count: 6, href: "/" },
+  { label: "MUSIC", count: null, href: "/music" },
+  { label: "DINING", count: null, href: "/dining" },
+  { label: "HOSPITALITY", count: null, href: "/hospitality" },
+  { label: "DESIGN", count: null, href: "/design" },
+  { label: "LIFESTYLE", count: null, href: "/lifestyle" },
+  { label: "COMMUNITY", count: null, href: "/community" },
 ];
 
 export default function FloatingFilter() {
@@ -27,17 +28,17 @@ export default function FloatingFilter() {
       <div
         className={`bg-surface/70 backdrop-blur-xl border border-outline-variant/40 shadow-[0_8px_32px_rgba(0,0,0,0.15)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
           hovered
-            ? "rounded-[28px] w-[180px] py-5 px-3"
-            : "rounded-[28px] w-[72px] h-[72px] flex items-center justify-center"
+            ? "rounded-[28px] w-[200px] py-5 px-3"
+            : "rounded-[28px] w-auto min-w-[100px] h-[72px] flex items-center justify-center px-6"
         }`}
       >
         {!hovered ? (
-          <div className="flex flex-col items-center gap-0.5">
-            <span className="font-label text-[10px] tracking-[0.2em] uppercase text-on-surface">
+          <div className="flex items-center gap-2">
+            <span className="font-label text-[11px] tracking-[0.2em] uppercase text-on-surface whitespace-nowrap">
               {activeCat.label}
             </span>
             {activeCat.count !== null && (
-              <span className="font-label text-[9px] text-on-surface-variant">
+              <span className="font-label text-[10px] text-on-surface-variant whitespace-nowrap">
                 ({activeCat.count})
               </span>
             )}
@@ -45,8 +46,9 @@ export default function FloatingFilter() {
         ) : (
           <div className="flex flex-col gap-1">
             {categories.map((cat) => (
-              <button
+              <Link
                 key={cat.label}
+                href={cat.href}
                 onClick={() => setActive(cat.label)}
                 className={`w-full text-left font-label text-[11px] tracking-[0.18em] uppercase py-2.5 px-4 rounded-full transition-all duration-200 ${
                   active === cat.label
@@ -58,7 +60,7 @@ export default function FloatingFilter() {
                 {cat.count !== null && (
                   <span className="ml-1.5 text-[9px] opacity-50">({cat.count})</span>
                 )}
-              </button>
+              </Link>
             ))}
           </div>
         )}

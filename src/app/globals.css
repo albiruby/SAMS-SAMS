@@ -287,3 +287,18 @@ html { scroll-behavior: smooth; }
 .btn-press:active {
   transform: scale(0.97);
 }
+
+.page-enter { opacity: 0; transform: translateY(12px); }
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1), transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.page-transition {
+  animation: pageFadeIn 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}

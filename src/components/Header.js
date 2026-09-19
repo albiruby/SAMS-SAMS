@@ -50,21 +50,21 @@ export default function Header() {
 
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className={`font-label text-body-sm tracking-[0.12em] transition-colors duration-200 ${
-                dark
-                  ? "text-on-surface-variant hover:text-on-surface"
-                  : "text-white/70 hover:text-white"
-              }`}
-            >
+          <Link
+            key={link.label}
+            href={link.href}
+            className={`font-label text-base lg:text-lg tracking-[0.15em] transition-colors duration-200 ${
+              dark
+                ? "text-on-surface-variant hover:text-on-surface"
+                : "text-white/70 hover:text-white"
+            }`}
+          >
               {link.label}
             </Link>
           ))}
 
           <div id="worlds-dropdown" className="relative group">
-            <span className={`font-label text-body-sm tracking-[0.12em] cursor-pointer transition-colors duration-200 flex items-center gap-1.5 ${
+            <span className={`font-label text-base lg:text-lg tracking-[0.15em] cursor-pointer transition-colors duration-200 flex items-center gap-1.5 ${
               dark
                 ? "text-on-surface-variant hover:text-on-surface"
                 : "text-white/70 hover:text-white"

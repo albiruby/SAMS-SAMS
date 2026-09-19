@@ -31,7 +31,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const dark = scrolled || !isHome;
+  const dark = !isHome || scrolled;
 
   return (
     <header
@@ -42,21 +42,12 @@ export default function Header() {
       }`}
     >
       <div className="w-full flex items-center justify-between h-20 lg:h-24 px-6 lg:px-10">
-        <Link href="/" className="flex-shrink-0">
-          <img
-            src="/logosamslight.png"
-            alt="Samsara"
-            className={`h-20 lg:h-24 w-auto transition-opacity duration-300 ${
-              dark ? "opacity-0 hidden" : "opacity-100"
-            }`}
-          />
-          <img
-            src="/logosamsdark.png"
-            alt="Samsara"
-            className={`h-20 lg:h-24 w-auto transition-opacity duration-300 ${
-              dark ? "opacity-100" : "opacity-0 hidden"
-            }`}
-          />
+        <Link href="/" className="flex-shrink-0 flex items-center">
+          {dark ? (
+            <img src="/logosamsdark.png" alt="Samsara" className="h-16 lg:h-20 w-auto" />
+          ) : (
+            <img src="/logosamslight.png" alt="Samsara" className="h-16 lg:h-20 w-auto" />
+          )}
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">

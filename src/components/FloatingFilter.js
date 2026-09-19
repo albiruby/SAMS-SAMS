@@ -23,7 +23,7 @@ export default function FloatingFilter() {
 
   const activeCat = categories.find((c) => c.label === active);
   const isDark = darkPages.includes(pathname);
-  const logoSrc = isDark ? "/logodoangdark.png" : "/logodoanglight.png";
+  const logoSrc = isDark ? "/logodoanglight.png" : "/logodoangdark.png";
 
   return (
     <div
@@ -34,7 +34,7 @@ export default function FloatingFilter() {
       <div
         className={`backdrop-blur-2xl border shadow-[0_8px_32px_rgba(0,0,0,0.12)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
           isDark
-            ? "bg-black/40 border-white/15"
+            ? "bg-white/30 border-black/10"
             : "bg-black/60 border-white/10"
         } ${
           hovered
@@ -55,8 +55,12 @@ export default function FloatingFilter() {
                 onClick={() => setActive(cat.label)}
                 className={`w-full text-left font-label text-[11px] tracking-[0.18em] uppercase py-2.5 px-4 rounded-full transition-all duration-200 ${
                   active === cat.label
-                    ? "bg-white text-black"
-                    : "text-white/70 hover:text-white hover:bg-white/10"
+                    ? isDark
+                      ? "bg-black text-white"
+                      : "bg-white text-black"
+                    : isDark
+                      ? "text-black/60 hover:text-black hover:bg-black/5"
+                      : "text-white/70 hover:text-white hover:bg-white/10"
                 }`}
               >
                 {cat.label}

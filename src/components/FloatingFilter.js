@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useTheme } from "./ThemeProvider";
+import { usePathname } from "next/navigation";
 
 const categories = [
   { label: "ALL", count: 6, href: "/" },
@@ -14,13 +14,15 @@ const categories = [
   { label: "COMMUNITY", count: null, href: "/community" },
 ];
 
+const darkPages = ["/", "/collaborations", "/samsara", "/svvara", "/nocturne"];
+
 export default function FloatingFilter() {
   const [active, setActive] = useState("ALL");
   const [hovered, setHovered] = useState(false);
-  const { theme } = useTheme();
+  const pathname = usePathname();
+  const isDark = darkPages.includes(pathname);
 
   const activeCat = categories.find((c) => c.label === active);
-  const isDark = theme === "dark";
   const logoSrc = isDark ? "/logodoangdark.png" : "/logodoanglight.png";
 
   return (
@@ -54,11 +56,11 @@ export default function FloatingFilter() {
                 className={`w-full text-left font-label text-[11px] tracking-[0.18em] uppercase py-2.5 px-4 rounded-full transition-all duration-200 ${
                   active === cat.label
                     ? isDark
-                      ? "bg-black text-white"
-                      : "bg-white text-black"
+                      ? "bg-on-surface text-surface"
+                      : "bg-surface text-on-surface"
                     : isDark
-                      ? "text-black/60 hover:text-black hover:bg-black/5"
-                      : "text-white/70 hover:text-white hover:bg-white/10"
+                      ? "text-on-surface/70 hover:text-on-surface hover:bg-black/5"
+                      : "text-surface/70 hover:text-surface hover:bg-white/10"
                 }`}
               >
                 {cat.label}

@@ -5,6 +5,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata = {
   title: "Lifestyle — Samsara Group",
+  description:
+    "Curated living across sound, food, movement, and nature. A lifestyle rooted in intention and material truth.",
 };
 
 export default function LifestylePage() {

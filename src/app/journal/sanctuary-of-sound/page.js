@@ -67,7 +67,7 @@ export default function SanctuaryOfSoundPage() {
 
           <ScrollReveal>
             <blockquote className="my-16 border-l-2 border-terracotta pl-8">
-              <p className="text-headline-sm font-display italic leading-relaxed text-on-surface">
+              <p className="text-headline-sm font-display leading-relaxed text-on-surface">
                 &ldquo;Sound is architecture in motion — and architecture is sound made still.&rdquo;
               </p>
             </blockquote>

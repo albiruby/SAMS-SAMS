@@ -5,6 +5,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata = {
   title: "Community — Samsara Group",
+  description:
+    "Member events, workshops, and meaningful exchange. A community built around sound, craft, and shared experience.",
 };
 
 const concepts = [

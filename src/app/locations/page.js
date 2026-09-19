@@ -50,6 +50,46 @@ const locations = [
 export default function LocationsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Samsara Group Locations",
+            url: "https://samsaragroup.co.id/locations",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                item: {
+                  "@type": "Place",
+                  name: "Svarga",
+                  address: "Jl. Raya Kintamani, Bangli, Bali",
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                item: {
+                  "@type": "Place",
+                  name: "Ubud",
+                  address: "Jl. Raya Sanggingan, Ubud, Gianyar, Bali 80561",
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                item: {
+                  "@type": "Place",
+                  name: "Jakarta",
+                  address: "Jl. Senopati No. 42, Kebayoran Baru, Jakarta Selatan",
+                },
+              },
+            ],
+          }),
+        }}
+      />
       <Header />
 
       <section className="bg-surface pt-28 pb-16 max-w-[1520px] mx-auto px-6 lg:px-10">

@@ -11,6 +11,24 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            name: "About Samsara Group",
+            url: "https://samsaragroup.co.id/about",
+            mainEntity: {
+              "@type": "Organization",
+              name: "Samsara Group",
+              url: "https://samsaragroup.co.id",
+              description:
+                "A multidisciplinary lifestyle and hospitality collective creating meaningful experiences across music, dining, design, hospitality, and culture.",
+            },
+          }),
+        }}
+      />
       <Header />
 
       <section className="bg-surface pt-28 pb-16 max-w-[1520px] mx-auto px-6 lg:px-10">

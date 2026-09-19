@@ -5,6 +5,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata = {
   title: "Hospitality — Samsara Group",
+  description:
+    "Boutique stays, highland retreats, and leisure rituals across Java and Bali. Quiet luxury rooted in local culture and material truth.",
 };
 
 const concepts = [

@@ -5,6 +5,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata = {
   title: "Design — Samsara Group",
+  description:
+    "Tactile artifacts, spatial identity, and material culture. Hand-formed objects built to last generations.",
 };
 
 const concepts = [

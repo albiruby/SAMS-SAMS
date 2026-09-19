@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import FloatingFilter from "@/components/FloatingFilter";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${inter.variable}`}>
       <body className="bg-surface font-sans text-on-surface antialiased">
         {children}
+        <FloatingFilter />
       </body>
     </html>
   );

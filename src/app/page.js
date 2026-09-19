@@ -4,7 +4,6 @@ import Link from "next/link";
 import Preloader from "@/components/Preloader";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import FloatingFilter from "@/components/FloatingFilter";
 
 const worlds = [
   { name: "SAMSARA", tagline: "THE SANCTUARY", disciplines: "ACOUSTICS · DINING · RETREAT", href: "/samsara" },
@@ -27,7 +26,6 @@ export default function HomePage() {
     <>
       <Preloader />
       <Header />
-      <FloatingFilter />
       <main className="w-full bg-surface">
 
         {/* ── Hero ── */}

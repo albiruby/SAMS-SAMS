@@ -71,7 +71,7 @@ export default async function CollaborationsPage() {
         </div>
       </section>
 
-      <section className="border-t border-white/10 px-6 lg:px-10 py-28">
+      <section className="border-t border-white/10 px-6 lg:px-10 py-16 lg:py-28">
         <ScrollReveal>
           <div className="flex flex-col items-center text-center">
             <h2 className="mb-8 text-headline-md md:text-headline-lg font-display uppercase leading-tight text-white">

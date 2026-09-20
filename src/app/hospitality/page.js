@@ -101,7 +101,11 @@ export default function HospitalityPage() {
                 <ScrollReveal key={concept.name}>
                   <article className="group">
                     <div className="aspect-[4/3] bg-surface-container-low mb-6 overflow-hidden">
-                      <div className="w-full h-full bg-primary/5 group-hover:bg-primary/10 transition-colors duration-500" />
+                      <img
+                        src={concept.name === "Acasa Stays" ? "/logosamsdark.png" : concept.name === "Samsara Retreats" ? "/tampilanawal.webp" : "/logosamslight.png"}
+                        alt={concept.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
                     </div>
                     <h3 className="font-display text-2xl md:text-3xl tracking-tight mb-4">
                       {concept.name}

@@ -42,10 +42,10 @@ export default function DesignPage() {
             </Link>{" "}
             &gt; Design
           </p>
-          <h1 className="font-display text-5xl lg:text-7xl text-on-surface mb-6">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl text-on-surface mb-6">
             Design
           </h1>
-          <p className="font-body text-lg lg:text-xl text-on-surface-variant max-w-2xl mb-32">
+          <p className="font-body text-lg lg:text-xl text-on-surface-variant max-w-2xl mb-16 lg:mb-32">
             The act of shaping objects and spaces with care. We believe design
             begins with listening — to material, to context, to the way a body
             moves through a room.
@@ -53,11 +53,11 @@ export default function DesignPage() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="border-t border-outline-variant pt-16 mb-32">
+          <div className="border-t border-outline-variant pt-16 mb-16 lg:mb-32">
             <p className="font-label text-xs tracking-[0.2em] uppercase text-on-surface-variant mb-4">
               Philosophy
             </p>
-            <h2 className="font-display text-3xl lg:text-5xl text-on-surface mb-8">
+            <h2 className="font-display text-2xl md:text-3xl lg:text-5xl text-on-surface mb-8">
               Object. Space. Material.
             </h2>
             <div className="grid lg:grid-cols-2 gap-12 max-w-4xl">
@@ -78,7 +78,7 @@ export default function DesignPage() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="mb-32">
+          <div className="mb-16 lg:mb-32">
             <p className="font-label text-xs tracking-[0.2em] uppercase text-on-surface-variant mb-12">
               Worlds of Design
             </p>
@@ -105,11 +105,11 @@ export default function DesignPage() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="bg-surface-container-low py-20 px-8 lg:px-16 mb-20 text-center">
+          <div className="bg-surface-container-low py-12 lg:py-20 px-6 lg:px-16 mb-12 lg:mb-20 text-center">
             <p className="font-label text-xs tracking-[0.2em] uppercase text-on-surface-variant mb-4">
               Begin a Conversation
             </p>
-            <h2 className="font-display text-3xl lg:text-4xl text-on-surface mb-6">
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl text-on-surface mb-6">
               Have a space that needs shaping?
             </h2>
             <p className="font-body text-on-surface-variant mb-8 max-w-lg mx-auto">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import MobileMenu from "./MobileMenu";
@@ -22,6 +22,8 @@ const worldsLinks = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const pathname = usePathname();
   const isHome = pathname === "/";
   useEffect(() => {
@@ -29,6 +31,20 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (!dropdownOpen) return;
+    const handleEscape = (e) => { if (e.key === "Escape") setDropdownOpen(false); };
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) setDropdownOpen(false);
+    };
+    document.addEventListener("keydown", handleEscape);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownOpen]);
 
   const isHomeTop = isHome && !scrolled;
 
@@ -40,39 +56,41 @@ export default function Header() {
           : "bg-primary/70 backdrop-blur-xl border-b border-white/10"
       }`}
     >
-      <div className="w-full flex items-center justify-between h-20 lg:h-24 px-6 lg:px-10">
-        <Link href="/" className="flex-shrink-0 flex items-center">
-          {isHomeTop ? (
-            <img src="/logosamslight.png" alt="Samsara" className="h-32 lg:h-40 w-auto" />
-          ) : (
-            <img src="/logosamslight.png" alt="Samsara" className="h-32 lg:h-40 w-auto" />
-          )}
+      <div className="w-full flex items-center justify-between h-16 lg:h-20 px-6 lg:px-10">
+        <Link href="/" className="flex-shrink-0 flex items-center h-full overflow-hidden">
+          <img src="/logosamslight.png" alt="Samsara" className="h-[200%] w-auto -my-[30%] -ml-2 object-contain object-left" />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-6 lg:gap-8">
           {navLinks.map((link) => (
           <Link
             key={link.label}
             href={link.href}
-            className="font-label text-base lg:text-lg tracking-[0.15em] transition-colors duration-200 text-white/70 hover:text-white"
+            className="font-label text-sm lg:text-lg tracking-[0.15em] transition-colors duration-200 text-white/70 hover:text-white"
           >
               {link.label}
-            </Link>
+          </Link>
           ))}
 
-          <div id="worlds-dropdown" className="relative group">
-            <span className="font-label text-base lg:text-lg tracking-[0.15em] cursor-pointer transition-colors duration-200 flex items-center gap-1.5 text-white/70 hover:text-white">
+          <div ref={dropdownRef} id="worlds-dropdown" className="relative group">
+            <button
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="font-label text-sm lg:text-lg tracking-[0.15em] cursor-pointer transition-colors duration-200 flex items-center gap-1.5 text-white/70 hover:text-white bg-transparent border-none"
+              aria-expanded={dropdownOpen}
+              aria-haspopup="true"
+            >
               WORLDS
-              <svg className="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <svg className={`w-3 h-3 transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`} viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M3 4.5L6 7.5L9 4.5" />
               </svg>
-            </span>
-            <div className="dropdown-menu absolute top-full left-0 mt-0 min-w-[180px] z-[200] pt-2">
+            </button>
+            <div className={`dropdown-menu absolute top-full left-0 mt-0 min-w-[180px] z-[200] pt-2 ${dropdownOpen ? "open" : ""}`}>
               <div className="bg-surface border border-outline-variant shadow-lg py-2">
                 {worldsLinks.map((link) => (
                   <Link
                     key={link.label}
                     href={link.href}
+                    onClick={() => setDropdownOpen(false)}
                     className="block px-5 py-2.5 font-label text-label-sm tracking-[0.14em] uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors"
                   >
                     {link.label}
@@ -93,7 +111,9 @@ export default function Header() {
 
           <button
             onClick={() => setMenuOpen(true)}
-            className="lg:hidden flex items-center gap-2 font-label text-label-uppercase transition-colors duration-200 text-white/70 hover:text-white"
+            className="lg:hidden flex items-center justify-center w-11 h-11 font-label text-label-uppercase transition-colors duration-200 text-white/70 hover:text-white"
+            aria-label="Open menu"
+            aria-expanded={menuOpen}
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M4 7h16M4 12h16M4 17h16" />

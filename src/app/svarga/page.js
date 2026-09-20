@@ -37,18 +37,20 @@ export default async function SvargaPage() {
 
       <section className="bg-surface max-w-[1520px] mx-auto px-6 lg:px-10 pb-16">
         <ScrollReveal>
-          <div className="w-full aspect-[21/9] overflow-hidden">
+          <div className="w-full aspect-[4/3] md:aspect-[21/9] overflow-hidden">
             {world?.image ? (
               <img src={urlFor(world.image).url()} alt="Svarga Estate" className="h-full w-full object-cover" />
             ) : (
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxmAlsOQm3o_ps7vQB4K0A2jyRwPcLthVB15dNACEJwDfaH9tVn4VOMqJB_6Th6WpKBFsKEX4CgkANSxgmWT049ncxex_GO4n4hD0mKR4OlbLtndGlqeV1ZNZOtVozjR4rXLtVoFMHfYD0rZQy5sfWSE1K-XNJWEbBAa419OORXKrwCitXqhC8xXJhvq47iPpVfh3P7tGZCwhpgJVObeAtgjOYw6Rbc-qVCdfu3uVCk4KM7gXlSBHo" alt="Svarga Estate" className="h-full w-full object-cover" />
+              <div className="w-full h-full bg-surface-container flex items-center justify-center">
+                <span className="text-on-surface-variant text-label-caps-sm uppercase tracking-[0.2em]">Svarga</span>
+              </div>
             )}
           </div>
         </ScrollReveal>
       </section>
 
       <section className="bg-surface max-w-[1520px] mx-auto px-6 lg:px-10 pb-28">
-        <div className="grid gap-16 lg:grid-cols-12">
+        <div className="grid gap-8 lg:gap-16 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <ScrollReveal>
               <div className="space-y-12">
@@ -62,9 +64,9 @@ export default async function SvargaPage() {
                   <h2 className="mb-6 text-headline-sm font-display uppercase tracking-wide text-on-surface">SPECIFICATIONS</h2>
                   <div className="space-y-4">
                     {specs.map(([label, value]) => (
-                      <div key={label} className="flex justify-between border-b border-outline-variant pb-4">
-                        <span className="text-label-caps-sm uppercase tracking-wider text-on-surface-variant">{label}</span>
-                        <span className="text-body-md text-on-surface">{value}</span>
+                      <div key={label} className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 border-b border-outline-variant pb-4">
+                        <span className="text-label-caps-sm uppercase tracking-wider text-on-surface-variant shrink-0">{label}</span>
+                        <span className="text-body-md text-on-surface min-w-0">{value}</span>
                       </div>
                     ))}
                   </div>
@@ -80,7 +82,9 @@ export default async function SvargaPage() {
                   {world?.image ? (
                     <img src={urlFor(world.image).url()} alt="Svarga Suite" className="h-full w-full object-cover" />
                   ) : (
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxmAlsOQm3o_ps7vQB4K0A2jyRwPcLthVB15dNACEJwDfaH9tVn4VOMqJB_6Th6WpKBFsKEX4CgkANSxgmWT049ncxex_GO4n4hD0mKR4OlbLtndGlqeV1ZNZOtVozjR4rXLtVoFMHfYD0rZQy5sfWSE1K-XNJWEbBAa419OORXKrwCitXqhC8xXJhvq47iPpVfh3P7tGZCwhpgJVObeAtgjOYw6Rbc-qVCdfu3uVCk4KM7gXlSBHo" alt="Svarga Suite" className="h-full w-full object-cover" />
+                    <div className="w-full h-full bg-surface-container flex items-center justify-center">
+                      <span className="text-on-surface-variant text-label-caps-sm uppercase tracking-[0.2em]">Svarga Suite</span>
+                    </div>
                   )}
                 </div>
                 <Link href="/contact" className="inline-flex w-full items-center justify-center gap-3 bg-primary px-8 py-4 text-label-caps-sm uppercase tracking-widest text-on-primary transition-colors hover:bg-primary-container">

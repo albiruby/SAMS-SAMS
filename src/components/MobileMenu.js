@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 
 const mobileLinks = [
@@ -20,22 +20,65 @@ const worldsSubLinks = [
 ];
 
 export default function MobileMenu({ isOpen, onClose }) {
+  const closeButtonRef = useRef(null);
+  const previousFocusRef = useRef(null);
+
   useEffect(() => {
     if (isOpen) {
+      previousFocusRef.current = document.activeElement;
       document.body.style.overflow = "hidden";
+      setTimeout(() => closeButtonRef.current?.focus(), 100);
     } else {
       document.body.style.overflow = "";
+      previousFocusRef.current?.focus();
     }
     return () => {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleEscape = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [isOpen, onClose]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleTab = (e) => {
+      if (e.key !== "Tab") return;
+      const focusable = document.querySelectorAll(
+        ".mobile-menu-overlay a, .mobile-menu-overlay button"
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", handleTab);
+    return () => document.removeEventListener("keydown", handleTab);
+  }, [isOpen]);
+
   return (
-    <div className={`mobile-menu-overlay ${isOpen ? "open" : ""}`}>
+    <div
+      className={`mobile-menu-overlay ${isOpen ? "open" : ""}`}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Mobile navigation"
+    >
       <button
+        ref={closeButtonRef}
         onClick={onClose}
-        className="absolute top-6 right-6 text-white/60 hover:text-white transition-colors"
+        className="absolute top-6 right-6 p-3 text-white/60 hover:text-white transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
         aria-label="Close menu"
       >
         <svg
@@ -55,7 +98,7 @@ export default function MobileMenu({ isOpen, onClose }) {
             key={link.label}
             href={link.href}
             onClick={onClose}
-            className="text-white text-[13px] tracking-[0.22em] font-medium uppercase hover:text-terracotta transition-colors"
+            className="text-white text-[13px] tracking-[0.22em] font-medium uppercase hover:text-terracotta transition-colors min-h-[44px] flex items-center"
           >
             {link.label}
           </Link>
@@ -69,7 +112,7 @@ export default function MobileMenu({ isOpen, onClose }) {
               key={link.label}
               href={link.href}
               onClick={onClose}
-              className="text-white/70 text-[12px] tracking-[0.2em] uppercase hover:text-terracotta transition-colors"
+              className="text-white/70 text-[12px] tracking-[0.2em] uppercase hover:text-terracotta transition-colors min-h-[44px] flex items-center"
             >
               {link.label}
             </Link>
@@ -77,7 +120,7 @@ export default function MobileMenu({ isOpen, onClose }) {
         </div>
       </nav>
 
-      <p className="absolute bottom-8 text-white/30 text-[10px] tracking-[0.3em] uppercase">
+      <p className="absolute bottom-8 pb-[env(safe-area-inset-bottom)] text-white/30 text-[10px] tracking-[0.3em] uppercase">
         SAMSARA GROUP – NUSANTARA ARCHIPELAGO
       </p>
     </div>

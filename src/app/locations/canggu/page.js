@@ -30,14 +30,14 @@ export default function CangguLocationPage() {
 
       <section className="bg-surface max-w-[1520px] mx-auto px-6 lg:px-10 pb-16">
         <ScrollReveal>
-          <div className="w-full aspect-[21/9] overflow-hidden">
-            <FadeInImage src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQmBg4kvXIMCi_ZCe8Le6xMtHoEoiS_hJ_Ht-u4T-nq0FyD1kI-cmljJW86GGLxuLq6dgqn2lTjawXtFboD2uwSdHPpwD8Xz0AbUUbdypcz3dYh4oD2CG5LG9So0nQQHF3cfl_sq-l4n2v8TG7yNjEeyi-7hzJOXsFj58-KV5PptEZ4Xp-4cwA11UxNnZ-WoRbyv7-J94P-fzkVv4uasg7Z2ZTw0USC7oooT6aZR0VJps2HysBnpZ3" alt="Canggu Location" className="h-full w-full object-cover" />
+          <div className="w-full aspect-[4/3] md:aspect-[21/9] overflow-hidden">
+            <FadeInImage src="/tampilanawal.webp" alt="Canggu Location" className="h-full w-full object-cover" />
           </div>
         </ScrollReveal>
       </section>
 
       <section className="bg-surface max-w-[1520px] mx-auto px-6 lg:px-10 pb-28">
-        <div className="grid gap-16 lg:grid-cols-12">
+        <div className="grid gap-8 lg:gap-16 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <ScrollReveal>
               <div className="space-y-12">
@@ -57,9 +57,9 @@ export default function CangguLocationPage() {
                       ["Concept", "Coastal community space"],
                       ["Focus", "Community, surf, gathering"],
                     ].map(([label, value]) => (
-                      <div key={label} className="flex justify-between border-b border-outline-variant pb-4">
-                        <span className="text-label-caps-sm uppercase tracking-wider text-on-surface-variant">{label}</span>
-                        <span className="text-body-md text-on-surface text-right max-w-[60%]">{value}</span>
+                      <div key={label} className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 border-b border-outline-variant pb-4">
+                        <span className="text-label-caps-sm uppercase tracking-wider text-on-surface-variant shrink-0">{label}</span>
+                        <span className="text-body-md text-on-surface text-right min-w-0">{value}</span>
                       </div>
                     ))}
                   </div>

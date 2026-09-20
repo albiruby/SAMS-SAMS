@@ -34,7 +34,7 @@ export default function LeadSpatialPage() {
       </section>
 
       <section className="bg-surface max-w-[1520px] mx-auto px-6 lg:px-10 pb-28">
-        <div className="grid gap-16 lg:grid-cols-12">
+        <div className="grid gap-8 lg:gap-16 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <ScrollReveal>
               <div className="space-y-12">

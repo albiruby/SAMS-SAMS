@@ -4,18 +4,27 @@ import { useEffect, useRef } from "react";
 
 export default function Parallax({ children, speed = 0.3, className = "" }) {
   const ref = useRef(null);
+  const ticking = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const isMobile = window.innerWidth < 768;
+    if (mq.matches || isMobile) return;
+
     const onScroll = () => {
-      const rect = el.getBoundingClientRect();
-      const scrolled = window.innerHeight - rect.top;
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        const offset = scrolled * speed;
-        el.style.transform = `translateY(${offset}px)`;
-      }
+      if (ticking.current) return;
+      ticking.current = true;
+      requestAnimationFrame(() => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          const offset = (window.innerHeight - rect.top) * speed;
+          el.style.transform = `translateY(${offset}px)`;
+        }
+        ticking.current = false;
+      });
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });

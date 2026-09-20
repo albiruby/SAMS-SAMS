@@ -6,6 +6,11 @@ import ThemeSetter from "@/components/ThemeSetter";
 import { getWorlds } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 
+export const metadata = {
+  title: "Samsara — Samsara Group",
+  description: "Sound. Food. Culture. A sanctuary where every frequency is designed.",
+};
+
 export default async function SamsaraPage() {
   let world = null;
   try {
@@ -39,18 +44,20 @@ export default async function SamsaraPage() {
 
       <section className="bg-surface max-w-[1520px] mx-auto px-6 lg:px-10 pb-16">
         <ScrollReveal>
-          <div className="w-full aspect-[21/9] overflow-hidden">
+          <div className="w-full aspect-[4/3] md:aspect-[21/9] overflow-hidden">
             {world?.image ? (
               <img src={urlFor(world.image).url()} alt="Samsara Sanctuary" className="h-full w-full object-cover" />
             ) : (
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQmBg4kvXIMCi_ZCe8Le6xMtHoEoiS_hJ_Ht-u4T-nq0FyD1kI-cmljJW86GGLxuLq6dgqn2lTjawXtFboD2uwSdHPpwD8Xz0AbUUbdypcz3dYh4oD2CG5LG9So0nQQHF3cfl_sq-l4n2v8TG7yNjEeyi-7hzJOXsFj58-KV5PptEZ4Xp-4cwA11UxNnZ-WoRbyv7-J94P-fzkVv4uasg7Z2ZTw0USC7oooT6aZR0VJps2HysBnpZ3" alt="Samsara Sanctuary" className="h-full w-full object-cover" />
+              <div className="w-full h-full bg-surface-container flex items-center justify-center">
+                <span className="text-on-surface-variant text-label-caps-sm uppercase tracking-[0.2em]">Samsara</span>
+              </div>
             )}
           </div>
         </ScrollReveal>
       </section>
 
       <section className="bg-surface max-w-[1520px] mx-auto px-6 lg:px-10 pb-28">
-        <div className="grid gap-16 lg:grid-cols-12">
+        <div className="grid gap-8 lg:gap-16 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <ScrollReveal>
               <div className="space-y-12">
@@ -64,9 +71,9 @@ export default async function SamsaraPage() {
                   <h2 className="mb-6 text-headline-sm font-display uppercase tracking-wide text-on-surface">SPECIFICATIONS</h2>
                   <div className="space-y-4">
                     {specs.map(([label, value]) => (
-                      <div key={label} className="flex justify-between border-b border-outline-variant pb-4">
-                        <span className="text-label-caps-sm uppercase tracking-wider text-on-surface-variant">{label}</span>
-                        <span className="text-body-md text-on-surface">{value}</span>
+                      <div key={label} className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 border-b border-outline-variant pb-4">
+                        <span className="text-label-caps-sm uppercase tracking-wider text-on-surface-variant shrink-0">{label}</span>
+                        <span className="text-body-md text-on-surface min-w-0">{value}</span>
                       </div>
                     ))}
                   </div>
@@ -82,7 +89,9 @@ export default async function SamsaraPage() {
                   {world?.image ? (
                     <img src={urlFor(world.image).url()} alt="Samsara Interior" className="h-full w-full object-cover" />
                   ) : (
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQmBg4kvXIMCi_ZCe8Le6xMtHoEoiS_hJ_Ht-u4T-nq0FyD1kI-cmljJW86GGLxuLq6dgqn2lTjawXtFboD2uwSdHPpwD8Xz0AbUUbdypcz3dYh4oD2CG5LG9So0nQQHF3cfl_sq-l4n2v8TG7yNjEeyi-7hzJOXsFj58-KV5PptEZ4Xp-4cwA11UxNnZ-WoRbyv7-J94P-fzkVv4uasg7Z2ZTw0USC7oooT6aZR0VJps2HysBnpZ3" alt="Samsara Interior" className="h-full w-full object-cover" />
+                    <div className="w-full h-full bg-surface-container flex items-center justify-center">
+                      <span className="text-on-surface-variant text-label-caps-sm uppercase tracking-[0.2em]">Samsara Interior</span>
+                    </div>
                   )}
                 </div>
                 <Link href="/contact" className="inline-flex w-full items-center justify-center gap-3 bg-primary px-8 py-4 text-label-caps-sm uppercase tracking-widest text-on-primary transition-colors hover:bg-primary-container">

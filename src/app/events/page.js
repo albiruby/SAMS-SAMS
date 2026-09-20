@@ -76,7 +76,7 @@ export default async function EventsPage() {
                         </div>
                         <h2 className="mb-3 text-headline-md md:text-headline-lg font-display uppercase leading-tight text-on-surface">{event.title}</h2>
                         <p className="text-body-sm text-on-surface-variant/70 mb-8">{event.location}</p>
-                        <span className="inline-flex w-fit items-center gap-3 border border-on-surface/20 px-8 py-3 text-label-caps-sm uppercase tracking-widest text-on-surface transition-colors group-hover:bg-primary group-hover:text-on-primary">
+                        <span className="inline-flex w-fit items-center gap-3 border border-on-surface/20 px-8 py-4 text-label-caps-sm uppercase tracking-widest text-on-surface transition-colors group-hover:bg-primary group-hover:text-on-primary">
                           EXPLORE
                           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M1 6h10M7 2l4 4-4 4" /></svg>
                         </span>
@@ -90,7 +90,7 @@ export default async function EventsPage() {
         )}
       </section>
 
-      <section className="bg-primary max-w-[1520px] mx-auto px-6 lg:px-10 py-28">
+      <section className="bg-primary max-w-[1520px] mx-auto px-6 lg:px-10 py-16 lg:py-28">
         <ScrollReveal>
           <div className="flex flex-col items-center text-center">
             <h2 className="mb-8 text-headline-md md:text-headline-lg font-display uppercase leading-tight text-on-primary">

@@ -103,7 +103,7 @@ export default function CommunityPage() {
 
         <section className="max-w-[1520px] mx-auto px-6 lg:px-10 pb-32">
           <ScrollReveal>
-            <div className="bg-primary rounded-sm p-12 md:p-16 text-center">
+            <div className="bg-primary rounded-sm p-8 md:p-16 text-center">
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-normal text-on-primary tracking-tight mb-6">
                 Join Our Community
               </h2>

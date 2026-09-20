@@ -143,7 +143,7 @@ export default function sitemap() {
       priority: 0.6,
     },
     {
-      url: `${BASE_URL}/nocturne`,
+      url: `${BASE_URL}/events/nocturne`,
       lastModified,
       changeFrequency: "weekly",
       priority: 0.6,

@@ -14,7 +14,7 @@ const categories = [
   { label: "COMMUNITY", count: null, href: "/community" },
 ];
 
-const darkPages = ["/", "/collaborations", "/samsara", "/svvara", "/nocturne"];
+const darkPages = ["/", "/collaborations", "/samsara", "/svvara", "/events/nocturne"];
 
 export default function FloatingFilter() {
   const [active, setActive] = useState("ALL");

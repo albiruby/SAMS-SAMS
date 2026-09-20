@@ -66,7 +66,7 @@ export default function MusicPage() {
         </ScrollReveal>
       </section>
 
-      <section className="bg-surface-container-low max-w-[1520px] mx-auto px-6 lg:px-10 py-28">
+      <section className="bg-surface-container-low max-w-[1520px] mx-auto px-6 lg:px-10 py-16 lg:py-28">
         <ScrollReveal>
           <span className="mb-4 block text-label-caps-sm uppercase tracking-[0.2em] text-terracotta">WHERE WE PLAY</span>
           <h2 className="mb-16 text-headline-md md:text-headline-lg font-display uppercase leading-tight text-on-surface">VENUES</h2>
@@ -79,7 +79,7 @@ export default function MusicPage() {
                 <h3 className="mb-4 text-headline-sm font-display uppercase leading-tight text-on-surface">{venue.name}</h3>
                 <p className="text-body-sm text-on-surface-variant leading-relaxed flex-1">{venue.description}</p>
                 <div className="mt-8 border-t border-outline-variant pt-6">
-                  <Link href="/contact" className="inline-flex w-full items-center justify-center gap-3 border border-on-surface/20 px-6 py-3 text-label-caps-sm uppercase tracking-widest text-on-surface transition-colors hover:bg-primary hover:text-on-primary">
+                  <Link href="/contact" className="inline-flex w-full items-center justify-center gap-3 border border-on-surface/20 px-6 py-4 text-label-caps-sm uppercase tracking-widest text-on-surface transition-colors hover:bg-primary hover:text-on-primary">
                     INQUIRE
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M1 6h10M7 2l4 4-4 4" /></svg>
                   </Link>
@@ -90,7 +90,7 @@ export default function MusicPage() {
         </div>
       </section>
 
-      <section className="bg-primary max-w-[1520px] mx-auto px-6 lg:px-10 py-28">
+      <section className="bg-primary max-w-[1520px] mx-auto px-6 lg:px-10 py-16 lg:py-28">
         <ScrollReveal>
           <div className="flex flex-col items-center text-center">
             <h2 className="mb-8 text-headline-md md:text-headline-lg font-display uppercase leading-tight text-on-primary">

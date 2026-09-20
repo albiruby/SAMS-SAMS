@@ -49,12 +49,12 @@ export default async function LocationsPage() {
                       {location.hours && <p>{location.hours}</p>}
                     </div>
                     {location.slug?.current ? (
-                      <Link href={`/${location.slug.current}`} className="inline-flex w-full items-center justify-center gap-3 border border-on-surface/20 px-6 py-3 text-label-caps-sm uppercase tracking-widest text-on-surface transition-colors hover:bg-primary hover:text-on-primary">
+                      <Link href={`/${location.slug.current}`} className="inline-flex w-full items-center justify-center gap-3 border border-on-surface/20 px-6 py-4 text-label-caps-sm uppercase tracking-widest text-on-surface transition-colors hover:bg-primary hover:text-on-primary">
                         EXPLORE
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M1 6h10M7 2l4 4-4 4" /></svg>
                       </Link>
                     ) : (
-                      <span className="inline-flex w-full items-center justify-center gap-3 border border-on-surface/20 px-6 py-3 text-label-caps-sm uppercase tracking-widest text-on-surface-variant">COMING SOON</span>
+                      <span className="inline-flex w-full items-center justify-center gap-3 border border-on-surface/20 px-6 py-4 text-label-caps-sm uppercase tracking-widest text-on-surface-variant">COMING SOON</span>
                     )}
                   </div>
                 </article>

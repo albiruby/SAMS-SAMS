@@ -5,6 +5,11 @@ import { useEffect, useRef, useState } from "react";
 export default function StaggerText({ text, className = "", as: Tag = "h2", delay = 0 }) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [prefersReduced, setPrefersReduced] = useState(false);
+
+  useEffect(() => {
+    setPrefersReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
 
   useEffect(() => {
     const el = ref.current;
@@ -23,6 +28,10 @@ export default function StaggerText({ text, className = "", as: Tag = "h2", dela
   }, []);
 
   const words = text.split(" ");
+
+  if (prefersReduced) {
+    return <Tag className={className}>{text}</Tag>;
+  }
 
   return (
     <Tag ref={ref} className={className}>

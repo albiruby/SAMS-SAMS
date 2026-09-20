@@ -24,7 +24,7 @@ export default function LifestylePage() {
           <h1 className="font-display text-5xl md:text-7xl lg:text-[6.5rem] font-medium tracking-tight text-on-surface leading-[0.95] mb-10">
             Lifestyle
           </h1>
-          <p className="font-body text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed mb-32">
+          <p className="font-body text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed mb-16 lg:mb-32">
             The way we move through each day shapes everything. We design
             experiences that turn ordinary moments into deliberate rituals,
             elevating the everyday into something worth remembering.
@@ -32,7 +32,7 @@ export default function LifestylePage() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="border-t border-outline-variant pt-16 mb-32">
+          <div className="border-t border-outline-variant pt-16 mb-16 lg:mb-32">
             <p className="font-label text-xs tracking-[0.2em] uppercase text-terracotta mb-6">
               Philosophy
             </p>
@@ -50,7 +50,7 @@ export default function LifestylePage() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-outline-variant mb-32">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-outline-variant mb-16 lg:mb-32">
             <div className="bg-surface p-8 md:p-12">
               <p className="font-label text-xs tracking-[0.2em] uppercase text-terracotta mb-4">
                 01
@@ -92,7 +92,7 @@ export default function LifestylePage() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="bg-surface-container-low py-24 px-8 md:px-16 text-center mb-32">
+          <div className="bg-surface-container-low py-16 px-6 md:px-16 text-center mb-16 lg:mb-32">
             <p className="font-label text-xs tracking-[0.2em] uppercase text-on-surface-variant mb-6">
               Begin
             </p>

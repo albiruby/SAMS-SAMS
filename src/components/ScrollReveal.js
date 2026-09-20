@@ -9,6 +9,14 @@ export default function ScrollReveal({ children, className = "", delay = 0 }) {
     const el = ref.current;
     if (!el) return;
 
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) {
+      el.classList.add("revealed");
+      const imgs = el.querySelectorAll(".img-reveal");
+      imgs.forEach((img) => img.classList.add("revealed"));
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -37,9 +45,6 @@ export default function ScrollReveal({ children, className = "", delay = 0 }) {
     );
 
     observer.observe(el);
-
-    const imgs = el.querySelectorAll(".img-reveal");
-    imgs.forEach((img) => observer.observe(img));
 
     return () => observer.disconnect();
   }, [delay]);

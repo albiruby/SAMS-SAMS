@@ -29,7 +29,7 @@ export default async function JournalPage() {
             <p className="text-body-md text-on-surface-variant">No articles yet.</p>
           </ScrollReveal>
         ) : (
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {articles.map((article) => (
               <ScrollReveal key={article._id}>
                 <Link href={`/journal/${article.slug?.current}`} className="block group">

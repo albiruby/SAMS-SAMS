@@ -3,6 +3,12 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import FloatingFilter from "@/components/FloatingFilter";
 import PageTransition from "@/components/PageTransition";
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export const metadata = {
   title: "Samsara Group – Cultural Institution & Lifestyle House",
   description:
@@ -48,10 +54,18 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className="bg-surface font-sans text-on-surface antialiased">
+      <body className="bg-surface font-sans text-on-surface antialiased overflow-x-hidden">
         <ThemeProvider>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:bg-primary focus:text-on-primary focus:px-4 focus:py-2 focus:text-sm"
+          >
+            Skip to content
+          </a>
           <PageTransition>
-            {children}
+            <main id="main-content" tabIndex={-1}>
+              {children}
+            </main>
           </PageTransition>
           <FloatingFilter />
         </ThemeProvider>

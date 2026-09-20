@@ -6,6 +6,11 @@ import ThemeSetter from "@/components/ThemeSetter";
 import { getWorlds, getProducts } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 
+export const metadata = {
+  title: "Svvara — Samsara Group",
+  description: "Sound. Object. Design. Hand-formed instruments built to last generations.",
+};
+
 export default async function SvvaraPage() {
   let world = null;
   let products = [];
@@ -49,18 +54,20 @@ export default async function SvvaraPage() {
 
       <section className="bg-surface max-w-[1520px] mx-auto px-6 lg:px-10 pb-16">
         <ScrollReveal>
-          <div className="w-full aspect-[21/9] overflow-hidden">
+          <div className="w-full aspect-[4/3] md:aspect-[21/9] overflow-hidden">
             {world?.image ? (
               <img src={urlFor(world.image).url()} alt="Svvara Atelier" className="h-full w-full object-cover" />
             ) : (
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAARtFpYa_lXUkbEb4A8XI-KWfRs6nP2hq-_Mw5uXRVKGpGfgGPXw6uLPCb9Lk1yBlmxcigsJai6uf2HQiOEvRJu-5tA73QiuNFxSHeK-HFK0U1ZXW6I5iflD5cXG_0jbXnsI92C53R_DUakuRds5Zcbqt6iV-ep7AvhVBZyfqaml5y5DVPGR6U95a9E8Kr0PeMdPcbxVsTkUXNLSWs5huKsgYQVBn2Z6ZuKnaOQeSWba_3hjxnfs5A" alt="Svvara Atelier" className="h-full w-full object-cover" />
+              <div className="w-full h-full bg-surface-container flex items-center justify-center">
+                <span className="text-on-surface-variant text-label-caps-sm uppercase tracking-[0.2em]">Svvara</span>
+              </div>
             )}
           </div>
         </ScrollReveal>
       </section>
 
       <section className="bg-surface max-w-[1520px] mx-auto px-6 lg:px-10 pb-28">
-        <div className="grid gap-16 lg:grid-cols-2">
+        <div className="grid gap-8 lg:gap-16 lg:grid-cols-2">
           <ScrollReveal>
             <div className="space-y-12">
               <div>
@@ -74,9 +81,9 @@ export default async function SvvaraPage() {
                 <h2 className="mb-6 text-headline-sm font-display uppercase tracking-wide text-on-surface">SPECIFICATIONS</h2>
                 <div className="space-y-4">
                   {specs.map(([label, value]) => (
-                    <div key={label} className="flex justify-between border-b border-outline-variant pb-4">
-                      <span className="text-label-caps-sm uppercase tracking-wider text-on-surface-variant">{label}</span>
-                      <span className="text-body-md text-on-surface text-right">{value}</span>
+                    <div key={label} className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 border-b border-outline-variant pb-4">
+                      <span className="text-label-caps-sm uppercase tracking-wider text-on-surface-variant shrink-0">{label}</span>
+                      <span className="text-body-md text-on-surface text-right min-w-0">{value}</span>
                     </div>
                   ))}
                 </div>
@@ -89,9 +96,9 @@ export default async function SvvaraPage() {
               <h2 className="mb-8 text-headline-sm font-display uppercase tracking-wide text-on-surface">CURRENT COLLECTION</h2>
               <div className="space-y-6">
                 {displayProducts.map((product) => (
-                  <div key={product.name} className="border border-outline-variant bg-surface-container-low p-6 transition-colors hover:border-outline">
-                    <div className="flex items-start justify-between gap-4 mb-3">
-                      <h3 className="text-title-lg font-medium uppercase tracking-wide text-on-surface">{product.name}</h3>
+                    <div key={product.name} className="border border-outline-variant bg-surface-container-low p-6 transition-colors hover:border-outline">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 mb-3">
+                      <h3 className="text-title-lg font-medium uppercase tracking-wide text-on-surface min-w-0 break-words">{product.name}</h3>
                       <span className="shrink-0 text-body-sm text-terracotta">{product.price}</span>
                     </div>
                     <p className="text-body-sm text-on-surface-variant">{product.description}</p>

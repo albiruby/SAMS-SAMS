@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import { getJobOpenings } from "@/sanity/lib/queries";
 
 export const metadata = {
   title: "Careers — Samsara Group",
@@ -15,34 +16,9 @@ const values = [
   { title: "GROWTH", description: "Investing in people ready to deepen their practice." },
 ];
 
-const roles = [
-  {
-    slug: "lead-spatial",
-    title: "LEAD – SPATIAL DESIGN",
-    location: "Canggu, Bali",
-    department: "Design & Architecture",
-  },
-  {
-    slug: null,
-    title: "CULINARY DIRECTOR",
-    location: "Kintamani, Bali",
-    department: "Gastronomy",
-  },
-  {
-    slug: null,
-    title: "CURATORIAL ASSOCIATE",
-    location: "Jakarta",
-    department: "Programming",
-  },
-  {
-    slug: null,
-    title: "HOSPITALITY MANAGER",
-    location: "Bali",
-    department: "Guest Experience",
-  },
-];
+export default async function CareersPage() {
+  const roles = await getJobOpenings();
 
-export default function CareersPage() {
   return (
     <>
       <Header />
@@ -71,31 +47,33 @@ export default function CareersPage() {
         <ScrollReveal>
           <h2 className="mb-8 text-headline-sm font-display uppercase tracking-wide text-on-surface">OPEN POSITIONS</h2>
         </ScrollReveal>
-        <div className="divide-y divide-outline-variant border-t border-outline-variant">
-          {roles.map((role) => (
-            <ScrollReveal key={role.title}>
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 py-10 group">
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-3 mb-3">
-                    <span className="text-label-caps-sm uppercase tracking-[0.2em] text-terracotta">{role.location}</span>
-                    <span className="text-label-caps-sm uppercase tracking-wider text-on-surface-variant/60">{role.department}</span>
+        {roles.length === 0 ? (
+          <ScrollReveal>
+            <p className="text-body-md text-on-surface-variant border-t border-outline-variant py-10">No open positions at this time.</p>
+          </ScrollReveal>
+        ) : (
+          <div className="divide-y divide-outline-variant border-t border-outline-variant">
+            {roles.map((role) => (
+              <ScrollReveal key={role._id}>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 py-10 group">
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-3 mb-3">
+                      <span className="text-label-caps-sm uppercase tracking-[0.2em] text-terracotta">{role.location}</span>
+                      <span className="text-label-caps-sm uppercase tracking-wider text-on-surface-variant/60">{role.department}</span>
+                    </div>
+                    <h3 className="text-headline-sm font-display uppercase leading-tight text-on-surface">{role.title}</h3>
                   </div>
-                  <h3 className="text-headline-sm font-display uppercase leading-tight text-on-surface">{role.title}</h3>
-                </div>
-                <div className="shrink-0">
-                  {role.slug ? (
-                    <Link href={`/careers/${role.slug}`} className="inline-flex items-center gap-3 border border-on-surface/20 px-8 py-3 text-label-caps-sm uppercase tracking-widest text-on-surface transition-colors hover:bg-primary hover:text-on-primary">
+                  <div className="shrink-0">
+                    <Link href={`/careers/${role.slug?.current}`} className="inline-flex items-center gap-3 border border-on-surface/20 px-8 py-3 text-label-caps-sm uppercase tracking-widest text-on-surface transition-colors hover:bg-primary hover:text-on-primary">
                       APPLY
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M1 6h10M7 2l4 4-4 4" /></svg>
                     </Link>
-                  ) : (
-                    <span className="inline-flex items-center gap-3 border border-on-surface/20 px-8 py-3 text-label-caps-sm uppercase tracking-widest text-on-surface-variant">COMING SOON</span>
-                  )}
+                  </div>
                 </div>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        )}
       </section>
 
       <Footer />

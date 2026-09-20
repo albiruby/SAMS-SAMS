@@ -1,18 +1,30 @@
-"use client";
-
-import { useEffect } from "react";
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import { useTheme } from "@/components/ThemeProvider";
+import ThemeSetter from "@/components/ThemeSetter";
+import { getWorlds } from "@/sanity/lib/queries";
+import { urlFor } from "@/sanity/lib/image";
 
-export default function SamsaraPage() {
-  const { setTheme } = useTheme();
-  useEffect(() => { setTheme("dark"); return () => setTheme("light"); }, [setTheme]);
+export default async function SamsaraPage() {
+  let world = null;
+  try {
+    const worlds = await getWorlds();
+    world = worlds.find((w) => w.slug?.current === "samsara") || null;
+  } catch {
+    world = null;
+  }
+
+  const specs = world?.specifications || [
+    ["Acoustic Range", "18Hz-22kHz Reference"],
+    ["Gastronomy", "Terroir-Driven, Volcanic"],
+    ["Location", "JKT - 01 S 110 E"],
+    ["Listening Sessions", "Vinyl archive, 3,000+ pressings"],
+  ];
 
   return (
     <>
+      <ThemeSetter theme="dark" />
       <Header />
 
       <section className="bg-surface pt-28 pb-16 max-w-[1520px] mx-auto px-6 lg:px-10">
@@ -20,7 +32,7 @@ export default function SamsaraPage() {
           <span className="mb-4 block text-label-caps-sm uppercase tracking-[0.2em] text-on-surface-variant">WORLDS</span>
           <h1 className="text-display-md-mobile md:text-display-md font-display uppercase leading-[0.95] text-on-surface">SAMSARA</h1>
           <p className="mt-6 max-w-lg text-body-md text-on-surface-variant leading-relaxed">
-            Sound. Food. Culture. A sanctuary where every frequency is designed.
+            {world?.tagline || "Sound. Food. Culture. A sanctuary where every frequency is designed."}
           </p>
         </ScrollReveal>
       </section>
@@ -28,7 +40,11 @@ export default function SamsaraPage() {
       <section className="bg-surface max-w-[1520px] mx-auto px-6 lg:px-10 pb-16">
         <ScrollReveal>
           <div className="w-full aspect-[21/9] overflow-hidden">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQmBg4kvXIMCi_ZCe8Le6xMtHoEoiS_hJ_Ht-u4T-nq0FyD1kI-cmljJW86GGLxuLq6dgqn2lTjawXtFboD2uwSdHPpwD8Xz0AbUUbdypcz3dYh4oD2CG5LG9So0nQQHF3cfl_sq-l4n2v8TG7yNjEeyi-7hzJOXsFj58-KV5PptEZ4Xp-4cwA11UxNnZ-WoRbyv7-J94P-fzkVv4uasg7Z2ZTw0USC7oooT6aZR0VJps2HysBnpZ3" alt="Samsara Sanctuary" className="h-full w-full object-cover" />
+            {world?.image ? (
+              <img src={urlFor(world.image).url()} alt="Samsara Sanctuary" className="h-full w-full object-cover" />
+            ) : (
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQmBg4kvXIMCi_ZCe8Le6xMtHoEoiS_hJ_Ht-u4T-nq0FyD1kI-cmljJW86GGLxuLq6dgqn2lTjawXtFboD2uwSdHPpwD8Xz0AbUUbdypcz3dYh4oD2CG5LG9So0nQQHF3cfl_sq-l4n2v8TG7yNjEeyi-7hzJOXsFj58-KV5PptEZ4Xp-4cwA11UxNnZ-WoRbyv7-J94P-fzkVv4uasg7Z2ZTw0USC7oooT6aZR0VJps2HysBnpZ3" alt="Samsara Sanctuary" className="h-full w-full object-cover" />
+            )}
           </div>
         </ScrollReveal>
       </section>
@@ -40,19 +56,14 @@ export default function SamsaraPage() {
               <div className="space-y-12">
                 <div>
                   <p className="text-body-md text-on-surface-variant leading-relaxed">
-                    A sanctuary where sound becomes architecture and silence becomes nourishment. Every surface, every frequency, every flavor is designed to dissolve the boundary between guest and environment.
+                    {world?.description || "A sanctuary where sound becomes architecture and silence becomes nourishment. Every surface, every frequency, every flavor is designed to dissolve the boundary between guest and environment."}
                   </p>
                 </div>
 
                 <div className="border-t border-outline-variant pt-8">
                   <h2 className="mb-6 text-headline-sm font-display uppercase tracking-wide text-on-surface">SPECIFICATIONS</h2>
                   <div className="space-y-4">
-                    {[
-                      ["Acoustic Range", "18Hz–22kHz Reference"],
-                      ["Gastronomy", "Terroir-Driven, Volcanic"],
-                      ["Location", "JKT · 01°S 110°E"],
-                      ["Listening Sessions", "Vinyl archive, 3,000+ pressings"],
-                    ].map(([label, value]) => (
+                    {specs.map(([label, value]) => (
                       <div key={label} className="flex justify-between border-b border-outline-variant pb-4">
                         <span className="text-label-caps-sm uppercase tracking-wider text-on-surface-variant">{label}</span>
                         <span className="text-body-md text-on-surface">{value}</span>
@@ -68,7 +79,11 @@ export default function SamsaraPage() {
             <ScrollReveal>
               <div className="space-y-8">
                 <div className="w-full aspect-[4/5] overflow-hidden">
-                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQmBg4kvXIMCi_ZCe8Le6xMtHoEoiS_hJ_Ht-u4T-nq0FyD1kI-cmljJW86GGLxuLq6dgqn2lTjawXtFboD2uwSdHPpwD8Xz0AbUUbdypcz3dYh4oD2CG5LG9So0nQQHF3cfl_sq-l4n2v8TG7yNjEeyi-7hzJOXsFj58-KV5PptEZ4Xp-4cwA11UxNnZ-WoRbyv7-J94P-fzkVv4uasg7Z2ZTw0USC7oooT6aZR0VJps2HysBnpZ3" alt="Samsara Interior" className="h-full w-full object-cover" />
+                  {world?.image ? (
+                    <img src={urlFor(world.image).url()} alt="Samsara Interior" className="h-full w-full object-cover" />
+                  ) : (
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQmBg4kvXIMCi_ZCe8Le6xMtHoEoiS_hJ_Ht-u4T-nq0FyD1kI-cmljJW86GGLxuLq6dgqn2lTjawXtFboD2uwSdHPpwD8Xz0AbUUbdypcz3dYh4oD2CG5LG9So0nQQHF3cfl_sq-l4n2v8TG7yNjEeyi-7hzJOXsFj58-KV5PptEZ4Xp-4cwA11UxNnZ-WoRbyv7-J94P-fzkVv4uasg7Z2ZTw0USC7oooT6aZR0VJps2HysBnpZ3" alt="Samsara Interior" className="h-full w-full object-cover" />
+                  )}
                 </div>
                 <Link href="/contact" className="inline-flex w-full items-center justify-center gap-3 bg-primary px-8 py-4 text-label-caps-sm uppercase tracking-widest text-on-primary transition-colors hover:bg-primary-container">
                   RESERVE

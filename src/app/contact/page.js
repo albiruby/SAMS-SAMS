@@ -1,13 +1,39 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import { getContactInfo } from "@/sanity/lib/queries";
 
 export const metadata = {
   title: "Contact — Samsara Group",
   description: "Get in touch with Samsara Group for inquiries, reservations, and partnerships.",
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const contact = await getContactInfo();
+
+  const emails = contact?.emails || [
+    { label: "Private Sanctuary", email: "concierge@samsaragroup.com" },
+    { label: "Curatorial", email: "curatorial@samsaragroup.com" },
+    { label: "Press", email: "press@samsaragroup.com" },
+  ];
+
+  const addresses = contact?.addresses || [
+    { name: "Svarga Estate — Bali", address: "Jl. Raya Sanggingan, Ubud, Gianyar 80561" },
+    { name: "Acasa — Jakarta", address: "Jl. Senopati No. 42, Kebayoran Baru" },
+  ];
+
+  const hours = contact?.hours || "Mon–Sat: 09:00–18:00 · Sun: By appointment";
+
+  const inquiryTypes = contact?.inquiryTypes || [
+    { value: "reservation", label: "Reservation & Stay" },
+    { value: "dining", label: "Dining" },
+    { value: "music", label: "Music & Listening" },
+    { value: "design", label: "Design & Objects" },
+    { value: "community", label: "Community" },
+    { value: "press", label: "Press" },
+    { value: "partnership", label: "Partnership" },
+  ];
+
   return (
     <>
       <Header />
@@ -22,18 +48,12 @@ export default function ContactPage() {
         <div className="grid gap-12 lg:grid-cols-2 border-b border-outline-variant pb-16">
           <ScrollReveal>
             <div className="space-y-8">
-              <div>
-                <h3 className="mb-2 text-title-lg font-medium uppercase tracking-wide text-on-surface">Private Sanctuary</h3>
-                <a href="mailto:concierge@samsaragroup.com" className="text-body-md text-terracotta underline underline-offset-4 hover:text-primary transition-colors">concierge@samsaragroup.com</a>
-              </div>
-              <div>
-                <h3 className="mb-2 text-title-lg font-medium uppercase tracking-wide text-on-surface">Curatorial</h3>
-                <a href="mailto:curatorial@samsaragroup.com" className="text-body-md text-terracotta underline underline-offset-4 hover:text-primary transition-colors">curatorial@samsaragroup.com</a>
-              </div>
-              <div>
-                <h3 className="mb-2 text-title-lg font-medium uppercase tracking-wide text-on-surface">Press</h3>
-                <a href="mailto:press@samsaragroup.com" className="text-body-md text-terracotta underline underline-offset-4 hover:text-primary transition-colors">press@samsaragroup.com</a>
-              </div>
+              {emails.map((item) => (
+                <div key={item.label}>
+                  <h3 className="mb-2 text-title-lg font-medium uppercase tracking-wide text-on-surface">{item.label}</h3>
+                  <a href={`mailto:${item.email}`} className="text-body-md text-terracotta underline underline-offset-4 hover:text-primary transition-colors">{item.email}</a>
+                </div>
+              ))}
             </div>
           </ScrollReveal>
 
@@ -42,19 +62,17 @@ export default function ContactPage() {
               <div>
                 <h3 className="mb-2 text-title-lg font-medium uppercase tracking-wide text-on-surface">Visit Us</h3>
                 <div className="space-y-3 text-body-md text-on-surface-variant">
-                  <div>
-                    <p className="font-medium text-on-surface">Svarga Estate — Bali</p>
-                    <p>Jl. Raya Sanggingan, Ubud, Gianyar 80561</p>
-                  </div>
-                  <div>
-                    <p className="font-medium text-on-surface">Acasa — Jakarta</p>
-                    <p>Jl. Senopati No. 42, Kebayoran Baru</p>
-                  </div>
+                  {addresses.map((addr) => (
+                    <div key={addr.name}>
+                      <p className="font-medium text-on-surface">{addr.name}</p>
+                      <p>{addr.address}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
               <div>
                 <h3 className="mb-2 text-title-lg font-medium uppercase tracking-wide text-on-surface">Hours</h3>
-                <p className="text-body-md text-on-surface-variant">Mon–Sat: 09:00–18:00 · Sun: By appointment</p>
+                <p className="text-body-md text-on-surface-variant">{hours}</p>
               </div>
             </div>
           </ScrollReveal>
@@ -85,13 +103,9 @@ export default function ContactPage() {
               <label className="mb-2 block text-label-md uppercase tracking-wider text-on-surface-variant">Inquiry Type</label>
               <select required className="w-full border-b border-outline bg-transparent py-3 text-body-md text-on-surface outline-none transition-colors focus:border-terracotta">
                 <option value="">Select</option>
-                <option value="reservation">Reservation & Stay</option>
-                <option value="dining">Dining</option>
-                <option value="music">Music & Listening</option>
-                <option value="design">Design & Objects</option>
-                <option value="community">Community</option>
-                <option value="press">Press</option>
-                <option value="partnership">Partnership</option>
+                {inquiryTypes.map((type) => (
+                  <option key={type.value} value={type.value}>{type.label}</option>
+                ))}
               </select>
             </div>
             <div>

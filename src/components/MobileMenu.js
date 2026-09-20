@@ -5,8 +5,9 @@ import Link from "next/link";
 
 const mobileLinks = [
   { label: "THE GROUP", href: "/about" },
-  { label: "JOURNAL", href: "/journal" },
   { label: "EVENTS", href: "/events" },
+  { label: "JOURNAL", href: "/journal" },
+  { label: "PARTNERSHIPS", href: "/collaborations" },
   { label: "CAREERS", href: "/careers" },
   { label: "CONTACT", href: "/contact" },
 ];

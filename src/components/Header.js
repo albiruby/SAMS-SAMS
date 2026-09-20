@@ -7,7 +7,9 @@ import MobileMenu from "./MobileMenu";
 
 const navLinks = [
   { label: "THE GROUP", href: "/about" },
+  { label: "EVENTS", href: "/events" },
   { label: "JOURNAL", href: "/journal" },
+  { label: "PARTNERSHIPS", href: "/collaborations" },
 ];
 
 const worldsLinks = [
@@ -22,6 +24,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isDarkPage = ["/collaborations", "/samsara", "/svvara", "/nocturne"].some(p => pathname.startsWith(p));
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -29,20 +32,22 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const dark = !isHome || scrolled;
+  const isHomeTop = isHome && !scrolled;
 
   return (
     <header
       className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
-        dark
-          ? "bg-surface/30 backdrop-blur-xl border-b border-outline-variant/10"
-          : "bg-transparent"
+        isHomeTop
+          ? "bg-transparent"
+          : isDarkPage
+            ? "bg-primary/30 backdrop-blur-xl border-b border-white/10"
+            : "bg-primary/70 backdrop-blur-xl border-b border-white/10"
       }`}
     >
       <div className="w-full flex items-center justify-between h-20 lg:h-24 px-6 lg:px-10">
         <Link href="/" className="flex-shrink-0 flex items-center">
-          {dark ? (
-            <img src="/logosamsdark.png" alt="Samsara" className="h-32 lg:h-40 w-auto" />
+          {isHomeTop ? (
+            <img src="/logosamslight.png" alt="Samsara" className="h-32 lg:h-40 w-auto" />
           ) : (
             <img src="/logosamslight.png" alt="Samsara" className="h-32 lg:h-40 w-auto" />
           )}
@@ -53,22 +58,14 @@ export default function Header() {
           <Link
             key={link.label}
             href={link.href}
-            className={`font-label text-base lg:text-lg tracking-[0.15em] transition-colors duration-200 ${
-              dark
-                ? "text-on-surface-variant hover:text-on-surface"
-                : "text-white/70 hover:text-white"
-            }`}
+            className="font-label text-base lg:text-lg tracking-[0.15em] transition-colors duration-200 text-white/70 hover:text-white"
           >
               {link.label}
             </Link>
           ))}
 
           <div id="worlds-dropdown" className="relative group">
-            <span className={`font-label text-base lg:text-lg tracking-[0.15em] cursor-pointer transition-colors duration-200 flex items-center gap-1.5 ${
-              dark
-                ? "text-on-surface-variant hover:text-on-surface"
-                : "text-white/70 hover:text-white"
-            }`}>
+            <span className="font-label text-base lg:text-lg tracking-[0.15em] cursor-pointer transition-colors duration-200 flex items-center gap-1.5 text-white/70 hover:text-white">
               WORLDS
               <svg className="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M3 4.5L6 7.5L9 4.5" />
@@ -93,22 +90,14 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <Link
             href="/contact"
-            className={`hidden sm:inline-block font-label text-body-sm tracking-[0.12em] px-6 py-2.5 border transition-colors duration-200 ${
-              dark
-                ? "border-on-surface/30 text-on-surface hover:bg-on-surface hover:text-surface"
-                : "border-white/40 text-white hover:bg-white hover:text-primary"
-            }`}
+            className="hidden sm:inline-block font-label text-body-sm tracking-[0.12em] px-6 py-2.5 border border-white/40 text-white transition-colors duration-200 hover:bg-white hover:text-primary"
           >
             CONTACT NOW
           </Link>
 
           <button
             onClick={() => setMenuOpen(true)}
-            className={`lg:hidden flex items-center gap-2 font-label text-label-uppercase transition-colors duration-200 ${
-              dark
-                ? "text-on-surface-variant hover:text-on-surface"
-                : "text-white/70 hover:text-white"
-            }`}
+            className="lg:hidden flex items-center gap-2 font-label text-label-uppercase transition-colors duration-200 text-white/70 hover:text-white"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M4 7h16M4 12h16M4 17h16" />

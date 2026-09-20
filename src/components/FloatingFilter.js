@@ -23,7 +23,7 @@ export default function FloatingFilter() {
   const isDark = darkPages.includes(pathname);
 
   const activeCat = categories.find((c) => c.label === active);
-  const logoSrc = isDark ? "/logodoangdark.png" : "/logodoanglight.png";
+  const logoSrc = "/logodoangdark.png";
 
   return (
     <div
@@ -32,11 +32,7 @@ export default function FloatingFilter() {
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className={`backdrop-blur-2xl border shadow-[0_8px_32px_rgba(0,0,0,0.12)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
-          isDark
-            ? "bg-white/30 border-black/10"
-            : "bg-black/60 border-white/10"
-        } ${
+        className={`border shadow-[0_8px_32px_rgba(0,0,0,0.12)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden bg-white border-outline-variant ${
           hovered
             ? "rounded-[28px] w-[200px] py-5 px-3"
             : "rounded-[28px] w-[72px] h-[72px] flex items-center justify-center"
@@ -55,12 +51,8 @@ export default function FloatingFilter() {
                 onClick={() => setActive(cat.label)}
                 className={`w-full text-left font-label text-[11px] tracking-[0.18em] uppercase py-2.5 px-4 rounded-full transition-all duration-200 ${
                   active === cat.label
-                    ? isDark
-                      ? "bg-on-surface text-surface"
-                      : "bg-surface text-on-surface"
-                    : isDark
-                      ? "text-on-surface/70 hover:text-on-surface hover:bg-black/5"
-                      : "text-surface/70 hover:text-surface hover:bg-white/10"
+                    ? "bg-primary text-on-primary"
+                    : "text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low"
                 }`}
               >
                 {cat.label}

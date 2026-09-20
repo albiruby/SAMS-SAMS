@@ -24,8 +24,6 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const isDarkPage = ["/collaborations", "/samsara", "/svvara", "/nocturne"].some(p => pathname.startsWith(p));
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -39,9 +37,7 @@ export default function Header() {
       className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
         isHomeTop
           ? "bg-transparent"
-          : isDarkPage
-            ? "bg-primary/30 backdrop-blur-xl border-b border-white/10"
-            : "bg-primary/70 backdrop-blur-xl border-b border-white/10"
+          : "bg-primary/70 backdrop-blur-xl border-b border-white/10"
       }`}
     >
       <div className="w-full flex items-center justify-between h-20 lg:h-24 px-6 lg:px-10">

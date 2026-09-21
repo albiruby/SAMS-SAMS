@@ -1,48 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueRoman.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueMedium.otf") format("opentype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueBold.otf") format("opentype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueLight.otf") format("opentype");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueThin.otf") format("opentype");
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Helvetica Neue";
-  src: url("/fonts/HelveticaNeueHeavy.otf") format("opentype");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
 @theme {
   --color-primary: #000000;
   --color-on-primary: #ffffff;
@@ -80,10 +37,10 @@
   --color-paper: #FDF9F0;
   --color-on-secondary-fixed: #26190d;
 
-  --font-sans: "Helvetica Neue", "Arial", sans-serif;
-  --font-display: "Helvetica Neue", "Arial", sans-serif;
-  --font-body: "Helvetica Neue", "Arial", sans-serif;
-  --font-label: "Helvetica Neue", "Arial", sans-serif;
+  --font-sans: "Inter", "Arial", sans-serif;
+  --font-display: "Roboto Condensed", "Arial", sans-serif;
+  --font-body: "Inter", "Arial", sans-serif;
+  --font-label: "Roboto Condensed", "Arial", sans-serif;
 
   --text-display-hero: 72px;
   --text-display-hero-mobile: 44px;
@@ -231,7 +188,7 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .marquee-track { animation: none !important; }
+  .marquee-track { animation-duration: 20s !important; }
   .hero-stagger > * { opacity: 1; transform: none; }
   .stagger-child > * { opacity: 1; transform: none; }
   .fade-up { opacity: 1; transform: none; }
@@ -315,4 +272,34 @@
 @keyframes pageFadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+.clip-reveal {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.clip-reveal.revealed {
+  clip-path: inset(0 0 0 0);
+}
+
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: none; }
+  a, button, [data-cursor] { cursor: none; }
+}
+
+.cursor-hover {
+  width: 48px !important;
+  height: 48px !important;
+  border-color: rgba(168, 107, 82, 0.6) !important;
+  background: rgba(168, 107, 82, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clip-reveal {
+    clip-path: inset(0 0 0 0) !important;
+    transition: none !important;
+  }
 }

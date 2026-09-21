@@ -1,6 +1,9 @@
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import FloatingFilter from "@/components/FloatingFilter";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
+import HorizontalFilterBar from "@/components/HorizontalFilterBar";
+import BackToTop from "@/components/BackToTop";
+import CustomCursor from "@/components/CustomCursor";
 import PageTransition from "@/components/PageTransition";
 
 export const viewport = {
@@ -35,6 +38,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -55,6 +64,8 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="bg-surface font-sans text-on-surface antialiased overflow-x-hidden">
+        <CustomCursor />
+        <ScrollProgressBar />
         <ThemeProvider>
           <a
             href="#main-content"
@@ -67,8 +78,9 @@ export default function RootLayout({ children }) {
               {children}
             </main>
           </PageTransition>
-          <FloatingFilter />
+          <HorizontalFilterBar />
         </ThemeProvider>
+        <BackToTop />
       </body>
     </html>
   );

@@ -27,7 +27,7 @@ export default function FloatingFilter() {
 
   return (
     <div
-      className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex"
+      className="fixed right-4 lg:right-6 top-1/2 -translate-y-1/2 z-50 flex"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -35,7 +35,7 @@ export default function FloatingFilter() {
         className={`border shadow-[0_8px_32px_rgba(0,0,0,0.12)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden bg-white border-outline-variant ${
           hovered
             ? "rounded-[28px] w-[200px] py-5 px-3"
-            : "rounded-[28px] w-[72px] h-[72px] flex items-center justify-center"
+            : "rounded-full w-12 h-12 lg:w-[72px] lg:h-[72px] flex items-center justify-center"
         }`}
       >
         {!hovered ? (

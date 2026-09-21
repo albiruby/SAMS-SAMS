@@ -6,6 +6,10 @@ import Preloader from "@/components/Preloader";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeInImage from "@/components/FadeInImage";
+import TextClipReveal from "@/components/TextClipReveal";
+import MagneticButton from "@/components/MagneticButton";
+import ImageParallax from "@/components/ImageParallax";
+import NumberCounter from "@/components/NumberCounter";
 import { useTheme } from "@/components/ThemeProvider";
 
 const worlds = [
@@ -39,10 +43,12 @@ export default function HomePage() {
           <img src="/tampilanawal.webp" alt="Sams Group" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30" />
           <div className="relative z-10 h-full flex flex-col justify-end px-6 lg:px-10 pb-16 lg:pb-24">
-            <h1 className="font-display text-headline-lg-mobile md:text-headline-lg lg:text-display-hero uppercase leading-[0.95] tracking-tight text-white max-w-4xl">
-              WE CREATE PLACES<br />
-              <span className="text-white/80">TO FEEL SOMETHING.</span>
-            </h1>
+            <TextClipReveal>
+              <h1 className="font-display text-headline-lg-mobile md:text-headline-lg lg:text-display-hero uppercase leading-[0.95] tracking-tight text-white max-w-4xl">
+                WE CREATE PLACES<br />
+                <span className="text-white/80">TO FEEL SOMETHING.</span>
+              </h1>
+            </TextClipReveal>
           </div>
         </section>
 
@@ -52,16 +58,18 @@ export default function HomePage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div>
                 <span className="font-label text-body-sm uppercase tracking-[0.15em] text-on-surface-variant mb-4 block">ABOUT US</span>
-                <h2 className="font-display text-headline-md lg:text-headline-lg uppercase leading-[0.95] tracking-tight mb-8 text-on-surface">
-                  MORE THAN<br />A PLACE
-                </h2>
+                <TextClipReveal>
+                  <h2 className="font-display text-headline-md lg:text-headline-lg uppercase leading-[0.95] tracking-tight mb-8 text-on-surface">
+                    MORE THAN<br />A PLACE
+                  </h2>
+                </TextClipReveal>
                 <p className="font-body text-body-lg text-on-surface-variant leading-relaxed max-w-lg">
                   A multidisciplinary lifestyle and hospitality group creating meaningful experiences across music, dining, design, and culture.
                 </p>
               </div>
-              <div className="relative h-[400px] lg:h-[500px] overflow-hidden">
+              <ImageParallax className="relative h-[400px] lg:h-[500px]">
                 <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQmBg4kvXIMCi_ZCe8Le6xMtHoEoiS_hJ_Ht-u4T-nq0FyD1kI-cmljJW86GGLxuLq6dgqn2lTjawXtFboD2uwSdHPpwD8Xz0AbUUbdypcz3dYh4oD2CG5LG9So0nQQHF3cfl_sq-l4n2v8TG7yNjEeyi-7hzJOXsFj58-KV5PptEZ4Xp-4cwA11UxNnZ-WoRbyv7-J94P-fzkVv4uasg7Z2ZTw0USC7oooT6aZR0VJps2HysBnpZ3" alt="About" className="h-full w-full object-cover" />
-              </div>
+              </ImageParallax>
             </div>
           </div>
         </section>
@@ -70,9 +78,13 @@ export default function HomePage() {
         <section className="bg-surface-container-low w-full">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-20 lg:py-32">
             <span className="font-label text-body-sm uppercase tracking-[0.15em] text-on-surface-variant mb-4 block">OUR WORLDS</span>
-            <h2 className="font-display text-headline-md lg:text-headline-lg uppercase leading-[0.95] tracking-tight mb-12 lg:mb-16 text-on-surface">
-              FOUR IMMERSIVE WORLDS
-            </h2>
+            <div className="flex items-end gap-4 mb-12 lg:mb-16">
+              <TextClipReveal>
+                <h2 className="font-display text-headline-md lg:text-headline-lg uppercase leading-[0.95] tracking-tight text-on-surface">
+                  <NumberCounter target={4} duration={1000} /> IMMERSIVE WORLDS
+                </h2>
+              </TextClipReveal>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-outline-variant">
               {worlds.map((world) => (
                 <Link key={world.name} href={world.href} className="group card-hover bg-surface-container-low p-6 lg:p-8 hover:bg-surface transition-colors">
@@ -102,21 +114,25 @@ export default function HomePage() {
         <section className="bg-surface w-full">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-20 lg:py-32">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-              <div className="relative h-[400px] lg:h-[520px] overflow-hidden">
+              <ImageParallax className="relative h-[400px] lg:h-[520px]">
                 <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAARtFpYa_lXUkbEb4A8XI-KWfRs6nP2hq-_Mw5uXRVKGpGfgGPXw6uLPCb9Lk1yBlmxcigsJai6uf2HQiOEvRJu-5tA73QiuNFxSHeK-HFK0U1ZXW6I5iflD5cXG_0jbXnsI92C53R_DUakuRds5Zcbqt6iV-ep7AvhVBZyfqaml5y5DVPGR6U95a9E8Kr0PeMdPcbxVsTkUXNLSWs5huKsgYQVBn2Z6ZuKnaOQeSWba_3hjxnfs5A" alt="Experiences" className="h-full w-full object-cover" />
-              </div>
+              </ImageParallax>
               <div className="flex flex-col justify-center">
                 <span className="font-label text-body-sm uppercase tracking-[0.15em] text-on-surface-variant mb-6 block">EXPERIENCES</span>
-                <h2 className="font-display text-headline-md lg:text-headline-lg uppercase leading-[0.95] tracking-tight mb-8 text-on-surface">
-                  A SPACE SHAPED BY SOUND, RITUAL, AND CARE
-                </h2>
+                <TextClipReveal>
+                  <h2 className="font-display text-headline-md lg:text-headline-lg uppercase leading-[0.95] tracking-tight mb-8 text-on-surface">
+                    A SPACE SHAPED BY SOUND, RITUAL, AND CARE
+                  </h2>
+                </TextClipReveal>
                 <p className="font-body text-body-lg text-on-surface-variant leading-relaxed max-w-lg mb-10">
                   From volcanic highlands to the edge of the sea, every destination is a dialogue between place and purpose.
                 </p>
-                <Link href="/contact" className="inline-flex items-center gap-3 border border-on-surface/20 px-8 py-4 font-label text-body-sm uppercase tracking-[0.15em] text-on-surface hover:bg-on-surface hover:text-surface transition-colors w-fit">
-                  EXPLORE
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M1 6h10M7 2l4 4-4 4" /></svg>
-                </Link>
+                <MagneticButton strength={0.2}>
+                  <Link href="/contact" className="inline-flex items-center gap-3 border border-on-surface/20 px-8 py-4 font-label text-body-sm uppercase tracking-[0.15em] text-on-surface hover:bg-on-surface hover:text-surface transition-colors">
+                    EXPLORE
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M1 6h10M7 2l4 4-4 4" /></svg>
+                  </Link>
+                </MagneticButton>
               </div>
             </div>
           </div>
@@ -126,9 +142,11 @@ export default function HomePage() {
         <section className="bg-surface-container w-full">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-20 lg:py-32">
             <span className="font-label text-body-sm uppercase tracking-[0.15em] text-on-surface-variant mb-4 block">COLLABORATIONS</span>
-            <h2 className="font-display text-headline-md lg:text-headline-lg uppercase leading-[0.95] tracking-tight mb-12 lg:mb-16 text-on-surface">
-              MAKE TOGETHER
-            </h2>
+            <TextClipReveal>
+              <h2 className="font-display text-headline-md lg:text-headline-lg uppercase leading-[0.95] tracking-tight mb-12 lg:mb-16 text-on-surface">
+                MAKE TOGETHER
+              </h2>
+            </TextClipReveal>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {[
                 { title: "OUR VALUES", desc: "Craft. Community. Sustainability. Growth." },
@@ -151,13 +169,17 @@ export default function HomePage() {
         {/* ── CTA ── */}
         <section className="bg-primary-container w-full">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-40 text-center">
-            <h2 className="font-display text-headline-md lg:text-display-lg uppercase leading-[0.95] tracking-tight mb-8 text-on-primary-container">
-              COME EXPERIENCE<br />OUR WORLD.
-            </h2>
-            <Link href="/contact" className="inline-flex items-center gap-3 bg-primary px-10 py-4 font-label text-body-sm uppercase tracking-[0.15em] text-on-primary hover:bg-primary/90 transition-colors">
-              GET IN TOUCH
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M1 6h10M7 2l4 4-4 4" /></svg>
-            </Link>
+            <TextClipReveal>
+              <h2 className="font-display text-headline-md lg:text-display-lg uppercase leading-[0.95] tracking-tight mb-8 text-on-primary-container">
+                COME EXPERIENCE<br />OUR WORLD.
+              </h2>
+            </TextClipReveal>
+            <MagneticButton strength={0.2}>
+              <Link href="/contact" className="inline-flex items-center gap-3 bg-primary px-10 py-4 font-label text-body-sm uppercase tracking-[0.15em] text-on-primary hover:bg-primary/90 transition-colors">
+                GET IN TOUCH
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M1 6h10M7 2l4 4-4 4" /></svg>
+              </Link>
+            </MagneticButton>
           </div>
         </section>
 

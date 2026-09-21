@@ -5,8 +5,8 @@ import { schemaTypes } from "./src/sanity/schema";
 export default defineConfig({
   name: "samsara-group",
   title: "Samsara Group",
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID || "",
-  dataset: process.env.SANITY_STUDIO_DATASET || "production",
+  projectId: "p5zu5azj",
+  dataset: "production",
   plugins: [structureTool()],
   schema: {
     types: schemaTypes,
